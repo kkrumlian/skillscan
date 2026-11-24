@@ -1,0 +1,342 @@
+{
+  "repos": 100,
+  "stars_total": 4649976,
+  "stars_median": 30337.5,
+  "units": 9535,
+  "units_by_kind": {
+    "skill": 7108,
+    "agent": 1301,
+    "hooks": 29,
+    "command": 1047,
+    "mcp": 50
+  },
+  "units_per_repo_median": 12.0,
+  "repo_verdicts": {
+    "REVIEW": 12,
+    "OK": 86,
+    "BLOCK": 2
+  },
+  "unit_verdicts": {
+    "REVIEW": 131,
+    "OK": 9394,
+    "BLOCK": 10
+  },
+  "clean_units": 7209,
+  "repo_score_median": 94.0,
+  "cap_repos": {
+    "network": 55,
+    "fs-write": 34,
+    "shell": 71,
+    "hooks": 29,
+    "injection-surface": 44,
+    "mcp": 19,
+    "secrets": 17,
+    "obfuscation": 9
+  },
+  "rules": {
+    "sudo": {
+      "desc": "uses sudo",
+      "repos": 38,
+      "units": 242,
+      "findings": 1339,
+      "sev": {
+        "LOW": 1063,
+        "MED": 276
+      }
+    },
+    "net-fetch": {
+      "desc": "network fetch (curl/wget/requests/fetch)",
+      "repos": 48,
+      "units": 702,
+      "findings": 3084,
+      "sev": {
+        "LOW": 3084
+      }
+    },
+    "subprocess": {
+      "desc": "spawns processes (child_process/subprocess)",
+      "repos": 44,
+      "units": 458,
+      "findings": 751,
+      "sev": {
+        "LOW": 751
+      }
+    },
+    "tools-bash-any": {
+      "desc": "pre-approves unrestricted Bash",
+      "repos": 26,
+      "units": 643,
+      "findings": 643,
+      "sev": {
+        "HIGH": 180,
+        "MED": 463
+      }
+    },
+    "tools-write": {
+      "desc": "pre-approves file writes",
+      "repos": 25,
+      "units": 600,
+      "findings": 600,
+      "sev": {
+        "LOW": 600
+      }
+    },
+    "tools-web": {
+      "desc": "pre-approves web access",
+      "repos": 12,
+      "units": 92,
+      "findings": 92,
+      "sev": {
+        "LOW": 92
+      }
+    },
+    "pipe-to-shell": {
+      "desc": "downloads and pipes straight into a shell (described or warned against)",
+      "repos": 25,
+      "units": 82,
+      "findings": 139,
+      "sev": {
+        "LOW": 25,
+        "MED": 64,
+        "HIGH": 50
+      }
+    },
+    "inj-no-confirm": {
+      "desc": "tells the agent to skip confirmation / hide actions from the user (described or warned against)",
+      "repos": 42,
+      "units": 263,
+      "findings": 383,
+      "sev": {
+        "LOW": 218,
+        "MED": 165
+      }
+    },
+    "persistence": {
+      "desc": "writes to shell rc / launch agents / crontab",
+      "repos": 14,
+      "units": 37,
+      "findings": 94,
+      "sev": {
+        "MED": 61,
+        "LOW": 1,
+        "HIGH": 32
+      }
+    },
+    "dyn-exec": {
+      "desc": "dynamic code execution (eval/exec/os.system/shell=True)",
+      "repos": 18,
+      "units": 42,
+      "findings": 122,
+      "sev": {
+        "MED": 122
+      }
+    },
+    "net-exfil-post": {
+      "desc": "POSTs data to a remote host",
+      "repos": 26,
+      "units": 290,
+      "findings": 712,
+      "sev": {
+        "HIGH": 254,
+        "MED": 424,
+        "LOW": 34
+      }
+    },
+    "chmod-exec": {
+      "desc": "marks files executable / world-writable",
+      "repos": 24,
+      "units": 110,
+      "findings": 170,
+      "sev": {
+        "LOW": 170
+      }
+    },
+    "mcp-unpinned": {
+      "desc": "MCP server fetched from a package registry at launch (unpinned version)",
+      "repos": 4,
+      "units": 7,
+      "findings": 7,
+      "sev": {
+        "MED": 7
+      }
+    },
+    "bang-bash": {
+      "desc": "slash-command runs shell on invoke (!`cmd`)",
+      "repos": 5,
+      "units": 76,
+      "findings": 176,
+      "sev": {
+        "MED": 83,
+        "LOW": 93
+      }
+    },
+    "tools-bash-scoped": {
+      "desc": "pre-approves scoped Bash",
+      "repos": 12,
+      "units": 96,
+      "findings": 96,
+      "sev": {
+        "LOW": 96
+      }
+    },
+    "inj-override": {
+      "desc": "instruction-override phrasing (described or warned against)",
+      "repos": 13,
+      "units": 35,
+      "findings": 63,
+      "sev": {
+        "LOW": 31,
+        "HIGH": 32
+      }
+    },
+    "raw-ip": {
+      "desc": "hard-coded public IP address URL",
+      "repos": 5,
+      "units": 8,
+      "findings": 20,
+      "sev": {
+        "MED": 15,
+        "LOW": 5
+      }
+    },
+    "env-dump": {
+      "desc": "dumps all environment variables",
+      "repos": 5,
+      "units": 14,
+      "findings": 34,
+      "sev": {
+        "LOW": 34
+      }
+    },
+    "secret-paths": {
+      "desc": "reads credential stores (~/.ssh, ~/.aws, keychain, .env, browser data)",
+      "repos": 17,
+      "units": 70,
+      "findings": 176,
+      "sev": {
+        "MED": 79,
+        "HIGH": 81,
+        "LOW": 16
+      }
+    },
+    "webhook": {
+      "desc": "sends to a chat/webhook/paste endpoint",
+      "repos": 9,
+      "units": 29,
+      "findings": 53,
+      "sev": {
+        "LOW": 29,
+        "MED": 24
+      }
+    },
+    "inj-skip-perms": {
+      "desc": "disables agent permission checks (described or warned against)",
+      "repos": 11,
+      "units": 19,
+      "findings": 82,
+      "sev": {
+        "LOW": 12,
+        "MED": 44,
+        "HIGH": 26
+      }
+    },
+    "base64-blob": {
+      "desc": "long base64 blob",
+      "repos": 6,
+      "units": 6,
+      "findings": 61,
+      "sev": {
+        "MED": 57,
+        "LOW": 4
+      }
+    },
+    "inj-role": {
+      "desc": "fake system/role markers inside content",
+      "repos": 5,
+      "units": 8,
+      "findings": 25,
+      "sev": {
+        "MED": 11,
+        "LOW": 14
+      }
+    },
+    "mcp-remote": {
+      "desc": "remote MCP server https://connector.get-ryze.ai/mcp",
+      "repos": 6,
+      "units": 13,
+      "findings": 13,
+      "sev": {
+        "MED": 13
+      }
+    },
+    "b64-decode-exec": {
+      "desc": "decodes base64 and executes",
+      "repos": 5,
+      "units": 9,
+      "findings": 9,
+      "sev": {
+        "MED": 7,
+        "HIGH": 1,
+        "LOW": 1
+      }
+    },
+    "rm-rf-broad": {
+      "desc": "recursive delete of home/root/variable path",
+      "repos": 3,
+      "units": 7,
+      "findings": 7,
+      "sev": {
+        "MED": 6,
+        "HIGH": 1
+      }
+    },
+    "mcp-pkg": {
+      "desc": "MCP server fetched from a package registry at launch",
+      "repos": 2,
+      "units": 4,
+      "findings": 4,
+      "sev": {
+        "LOW": 4
+      }
+    },
+    "token-literal": {
+      "desc": "hard-coded API key/token",
+      "repos": 3,
+      "units": 4,
+      "findings": 10,
+      "sev": {
+        "HIGH": 7,
+        "MED": 3
+      }
+    },
+    "hidden-unicode": {
+      "desc": "invisible/bidi unicode U+202E (text the user can't see)",
+      "repos": 3,
+      "units": 5,
+      "findings": 6,
+      "sev": {
+        "HIGH": 6
+      }
+    }
+  },
+  "skills_total": 7108,
+  "skills_bash_any": 158,
+  "skills_with_allowed_tools_findings": 262,
+  "hooks_units": 29,
+  "hooks_network": 3,
+  "hooks_auto_high": 2,
+  "mcp_units": 50,
+  "mcp_unpinned": 7,
+  "mcp_remote": 13,
+  "mcp_inline_secret": 0,
+  "sample_precision": {
+    "sample_size": 60,
+    "population_high_findings": 670,
+    "seed": 7,
+    "accurate": 44,
+    "descriptive": 15,
+    "wrong_match": 1
+  },
+  "scan_date": "2026-11-24 UTC",
+  "scanner": "skillscan 0.1.0 --skills-only"
+}

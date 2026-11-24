@@ -1,0 +1,11 @@
+# local scan work dirs and caches (raw per-repo output is never committed)
+.work/
+skillscan-cache/
+*.lock.local
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+*.pem
+*.key

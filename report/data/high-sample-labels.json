@@ -1,0 +1,362 @@
+[
+ {
+  "i": 0,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 1,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 2,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 3,
+  "rule": "tools-bash-any",
+  "unit_kind": "command",
+  "label": "accurate"
+ },
+ {
+  "i": 4,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 5,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 6,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 7,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 8,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 9,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 10,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 11,
+  "rule": "inj-override",
+  "unit_kind": "agent",
+  "label": "descriptive"
+ },
+ {
+  "i": 12,
+  "rule": "persistence",
+  "unit_kind": "skill",
+  "label": "wrong_match"
+ },
+ {
+  "i": 13,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 14,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 15,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 16,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 17,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 18,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 19,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 20,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 21,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 22,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 23,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 24,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 25,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 26,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 27,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 28,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 29,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 30,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 31,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 32,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 33,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 34,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 35,
+  "rule": "pipe-to-shell",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 36,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 37,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 38,
+  "rule": "pipe-to-shell",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 39,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 40,
+  "rule": "tools-bash-any",
+  "unit_kind": "command",
+  "label": "accurate"
+ },
+ {
+  "i": 41,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 42,
+  "rule": "tools-bash-any",
+  "unit_kind": "command",
+  "label": "accurate"
+ },
+ {
+  "i": 43,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 44,
+  "rule": "net-exfil-post",
+  "unit_kind": "hooks",
+  "label": "accurate"
+ },
+ {
+  "i": 45,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 46,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 47,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 48,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 49,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 50,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 51,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 52,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 53,
+  "rule": "pipe-to-shell",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 54,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 55,
+  "rule": "inj-override",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 56,
+  "rule": "net-exfil-post",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 57,
+  "rule": "secret-paths",
+  "unit_kind": "skill",
+  "label": "descriptive"
+ },
+ {
+  "i": 58,
+  "rule": "pipe-to-shell",
+  "unit_kind": "skill",
+  "label": "accurate"
+ },
+ {
+  "i": 59,
+  "rule": "tools-bash-any",
+  "unit_kind": "skill",
+  "label": "accurate"
+ }
+]

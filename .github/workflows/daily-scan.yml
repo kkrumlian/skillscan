@@ -1,0 +1,62 @@
+name: Daily scan and deploy
+
+on:
+  schedule:
+    - cron: "17 6 * * *"   # every day at 06:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "skillscan.py", "targets/**", "scripts/**", ".github/workflows/**"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Scan target repos (read-only, nothing executed)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOBS: "8"
+        run: bash scripts/scan_all.sh .work
+
+      - name: Build site data
+        run: |
+          count=$(ls .work/scans/*.json | wc -l)
+          echo "scanned $count repos"
+          if [ "$count" -lt 50 ]; then echo "Too few successful scans; keeping the previous deploy." >&2; exit 1; fi
+          python site/build_data.py --names --src .work
+          sed -i "s/?v=[0-9]*/?v=${{ github.run_number }}/g" site/index.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

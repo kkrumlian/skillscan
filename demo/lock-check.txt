@@ -1,0 +1,14 @@
+$ skillscan lock ./team-skills -o skills.lock
+wrote skills.lock: 1 units approved
+$ skillscan check ./team-skills --lock skills.lock
+
+skillscan check: PASS (1 units, 0 problems)
+(exit 0)
+
+# teammate adds a new skill and edits an approved one
+$ skillscan check ./team-skills --lock skills.lock
+NEW        skill:skills/helper:helper  (score 0 BLOCK) not in lockfile
+CHANGED    skill:skills/summarize:summarize  hash 58ce881c35473de4 -> df1c4eabdf1e2850; gained caps: network
+
+skillscan check: FAIL (2 units, 2 problems)
+(exit 1)
