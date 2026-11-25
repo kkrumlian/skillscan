@@ -2,7 +2,7 @@
 
 *Static scan of 100 public GitHub repositories (4.6M combined stars, 9,535 skills, commands, subagents, hooks and MCP servers) with [skillscan](../README.md) 0.1, November 2026.*
 
-> **Update, 24 Nov 2026:** the scanner now has a fourth verdict, **CAUTION**, for powerful bundles doing something deliberate, such as calling their own documented backend. **BLOCK** is now reserved for exfiltration-like patterns. Re-scanned under the new rules, the 100 bundles split 88 OK, 8 REVIEW, 4 CAUTION and 0 BLOCK. The numbers below are from the original scan. The live site has the current verdicts.
+> **Update, 24 Nov 2026:** the scanner now has a fourth verdict, **CAUTION**, for powerful bundles doing something deliberate, such as calling their own documented backend. **BLOCK** is now reserved for exfiltration-like patterns. Re-scanned under the new rules, no bundle is BLOCK. A handful moved to CAUTION, and the rest are OK or REVIEW. The numbers below are from the original scan. The live site has the current verdicts.
 
 ## TL;DR
 
