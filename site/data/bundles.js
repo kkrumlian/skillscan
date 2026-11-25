@@ -1,21 +1,21 @@
 window.SKILLSCAN_DATA = {
  "summary": {
   "named": true,
-  "scan_date": "2026-11-24",
+  "scan_date": "2026-11-25",
   "scanner": "skillscan 0.1.0",
   "bundles": 100,
-  "units": 9535,
-  "clean_units": 7209,
-  "median_score": 94.0,
+  "units": 9544,
+  "clean_units": 7207,
+  "median_score": 94.5,
   "verdicts": {
-   "OK": 86,
-   "REVIEW": 12,
-   "BLOCK": 2
+   "OK": 88,
+   "CAUTION": 4,
+   "REVIEW": 8
   },
   "caps": {
    "hooks": 29,
    "mcp": 19,
-   "shell": 71,
+   "shell": 72,
    "fs-write": 34,
    "network": 55,
    "injection-surface": 44,
@@ -23,9 +23,9 @@ window.SKILLSCAN_DATA = {
    "obfuscation": 9
   },
   "kinds": {
-   "skills": 7108,
+   "skills": 7112,
    "commands": 1047,
-   "agents": 1301,
+   "agents": 1306,
    "hooks": 29,
    "mcp": 50
   },
@@ -83,12 +83,7 @@ window.SKILLSCAN_DATA = {
    {
     "rule": "webhook",
     "label": "Webhook / paste endpoint",
-    "bundles": 6
-   },
-   {
-    "rule": "mcp-remote",
-    "label": "Remote MCP server",
-    "bundles": 6
+    "bundles": 7
    },
    {
     "rule": "base64-blob",
@@ -116,6 +111,11 @@ window.SKILLSCAN_DATA = {
     "bundles": 4
    },
    {
+    "rule": "mcp-remote",
+    "label": "Remote MCP server",
+    "bundles": 3
+   },
+   {
     "rule": "rm-rf-broad",
     "label": "Broad recursive delete",
     "bundles": 3
@@ -126,14 +126,19 @@ window.SKILLSCAN_DATA = {
     "bundles": 3
    },
    {
-    "rule": "hidden-unicode",
-    "label": "Hidden unicode",
-    "bundles": 3
-   },
-   {
     "rule": "bang-bash",
     "label": "Shell runs on command invoke",
     "bundles": 3
+   },
+   {
+    "rule": "hidden-unicode",
+    "label": "Hidden unicode",
+    "bundles": 2
+   },
+   {
+    "rule": "exfil-combo",
+    "label": "Reads secrets + sends to undeclared host",
+    "bundles": 2
    }
   ],
   "categories": {
@@ -170,10 +175,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "Wei-Shaw/sub2api",
    "url": "https://github.com/Wei-Shaw/sub2api",
-   "stars": 46516,
+   "stars": 46567,
    "description": "Sub2API 一站式开源中转服务，让 Claude、Openai 、Gemini、Grok订阅统一接入，支持拼车共享，更高效分摊成本，原生工具无缝使用。",
    "license": "LGPL-3.0",
-   "commit": "328db26f450edbdf9f8d4344a3ea903ac6396842",
+   "commit": "0f6671457132425d1b84f3d80536b53e02942424",
    "top_findings": [],
    "worst_units": [],
    "id": "APP-01",
@@ -199,7 +204,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "chatboxai/chatbox",
    "url": "https://github.com/chatboxai/chatbox",
-   "stars": 42507,
+   "stars": 42526,
    "description": "Powerful AI Client",
    "license": "GPL-3.0",
    "commit": "446bcf43e7a89a0411218821de54d87d7f3cfe11",
@@ -228,7 +233,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "herdrdev/herdr",
    "url": "https://github.com/herdrdev/herdr",
-   "stars": 52505,
+   "stars": 52664,
    "description": "the runtime your coding agents live on",
    "license": "Apache-2.0",
    "commit": "e8d7d9705a7a2c89cef4dd42079379f05685af87",
@@ -261,7 +266,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "tigerless-labs/autoharness",
    "url": "https://github.com/tigerless-labs/autoharness",
-   "stars": 11142,
+   "stars": 11147,
    "description": "Building the self-learning layer next-gen agents will ship with, learning skills from real work.",
    "license": "MIT",
    "commit": "6d85325ab5ef436d1d4d52ffa82e43ea0365d144",
@@ -290,10 +295,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "genspark-ai/genoffice",
    "url": "https://github.com/genspark-ai/genoffice",
-   "stars": 12832,
+   "stars": 12891,
    "description": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so Claude Code, Codex and Cursor can create and edit real .docx/.xlsx/.pptx files locally. Bring your own key. macOS, Windows & Linux.",
    "license": "Apache-2.0",
-   "commit": "004b8224ee1b378a11f3fd588018545e9bcf79af",
+   "commit": "c57dc1a2a20a2af38cdaeedb536d86960d7eb382",
    "top_findings": [],
    "worst_units": [],
    "id": "APP-05",
@@ -319,10 +324,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "Panniantong/Agent-Reach",
    "url": "https://github.com/Panniantong/Agent-Reach",
-   "stars": 114263,
+   "stars": 114515,
    "description": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
    "license": "MIT",
-   "commit": "a8ab1e9a2475957d759eac2dbedfe91b0a1e1021",
+   "commit": "8d9ecc1f5521fe7d223cde782aaa4005695e2671",
    "top_findings": [],
    "worst_units": [],
    "id": "BRO-01",
@@ -377,9 +382,9 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "ComposioHQ/awesome-claude-skills",
    "url": "https://github.com/ComposioHQ/awesome-claude-skills",
-   "stars": 80179,
+   "stars": 80253,
    "description": "A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
-   "license": "",
+   "license": "2026-09-18T07:16:11Z",
    "commit": "be2a406907dbc61b73e6827ded415c96139d13a2",
    "top_findings": [
     {
@@ -551,9 +556,9 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "composio-community/awesome-codex-skills",
    "url": "https://github.com/composio-community/awesome-codex-skills",
-   "stars": 17408,
+   "stars": 17421,
    "description": "A curated list of practical Codex skills for automating workflows across the Codex CLI and API.",
-   "license": "",
+   "license": "2026-07-26T01:14:54Z",
    "commit": "0930e1373789d2eda449039f7ac154b33031de89",
    "top_findings": [
     {
@@ -718,7 +723,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "ChenLiu-1996/figures4papers",
    "url": "https://github.com/ChenLiu-1996/figures4papers",
-   "stars": 12435,
+   "stars": 12481,
    "description": "My Python scripts to make high-quality figures for publications in top AI conferences and journals.",
    "license": "NOASSERTION",
    "commit": "daa2833f03878454cb9b6ad3f9ecb68acad36ade",
@@ -747,7 +752,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "JCodesMore/ai-website-cloner-template",
    "url": "https://github.com/JCodesMore/ai-website-cloner-template",
-   "stars": 39680,
+   "stars": 39731,
    "description": "Clone any website with one command using AI coding agents",
    "license": "MIT",
    "commit": "5426e0e2ec35dbc173a7a18f47a3dfe2a765313e",
@@ -778,7 +783,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "ayghri/i-have-adhd",
    "url": "https://github.com/ayghri/i-have-adhd",
-   "stars": 62066,
+   "stars": 62167,
    "description": "A skill to stop your coding agent from burying the answer. ADHD-friendly output.",
    "license": "MIT",
    "commit": "1ecea1993b7fce257ffbd686c070948b5e07eda6",
@@ -786,35 +791,6 @@ window.SKILLSCAN_DATA = {
    "worst_units": [],
    "id": "DEV-02",
    "label": "ayghri/i-have-adhd"
-  },
-  {
-   "category": "Dev workflow",
-   "score": 100,
-   "verdict": "OK",
-   "units": 10,
-   "skills": 4,
-   "commands": 6,
-   "agents": 0,
-   "hooks": 0,
-   "mcp": 0,
-   "unit_verdicts": {
-    "OK": 10
-   },
-   "clean_units": 10,
-   "caps": [],
-   "sev": {},
-   "rules": [],
-   "stars_bucket": "50k–100k",
-   "repo": "alibaba/open-code-review",
-   "url": "https://github.com/alibaba/open-code-review",
-   "stars": 55693,
-   "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
-   "license": "Apache-2.0",
-   "commit": "e74f2c6bd4422bd1e12d257d1725bcce1d6b9ddd",
-   "top_findings": [],
-   "worst_units": [],
-   "id": "DEV-03",
-   "label": "alibaba/open-code-review"
   },
   {
    "category": "Dev workflow",
@@ -836,13 +812,13 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "Jakeschincariol/replica-skill",
    "url": "https://github.com/Jakeschincariol/replica-skill",
-   "stars": 10450,
+   "stars": 10566,
    "description": "Eleven free Claude skills that clone any app: reverse-engineer it, rebuild it, test it for bugs, then fix what its users hate. Free, MIT.",
    "license": "MIT",
    "commit": "77c9436fb3d18c3d58169efb8caf4fe906b0dc51",
    "top_findings": [],
    "worst_units": [],
-   "id": "DEV-04",
+   "id": "DEV-03",
    "label": "Jakeschincariol/replica-skill"
   },
   {
@@ -865,13 +841,13 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "googleworkspace/cli",
    "url": "https://github.com/googleworkspace/cli",
-   "stars": 32456,
-   "description": "Google Workspace CLI — one command-line tool for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more. Dynamically built from Google Discovery Service. Includes AI agent skills.",
+   "stars": 32463,
+   "description": " Community CLI for Google Workspace APIs.",
    "license": "Apache-2.0",
-   "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9",
+   "commit": "8e945eed02a8230af122ec6247cc218d28c1f1ce",
    "top_findings": [],
    "worst_units": [],
-   "id": "DEV-05",
+   "id": "DEV-04",
    "label": "googleworkspace/cli"
   },
   {
@@ -894,7 +870,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "phuryn/pm-skills",
    "url": "https://github.com/phuryn/pm-skills",
-   "stars": 28260,
+   "stars": 28293,
    "description": "PM Skills Marketplace: 100+ agentic skills, commands, and plugins — from discovery to strategy, execution, launch, and growth.",
    "license": "MIT",
    "commit": "9af7bfd0bc47fdad43c2eaa7a43cd13918e7aaef",
@@ -923,7 +899,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "dreammis/social-auto-upload",
    "url": "https://github.com/dreammis/social-auto-upload",
-   "stars": 16869,
+   "stars": 16938,
    "description": "自动化上传视频到社交媒体：抖音、小红书、视频号、tiktok、youtube、bilibili",
    "license": "MIT",
    "commit": "409d4fdd33f3eb0d946310af93633ddb5eebe1d5",
@@ -954,10 +930,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "headroomlabs-ai/headroom",
    "url": "https://github.com/headroomlabs-ai/headroom",
-   "stars": 80671,
+   "stars": 80779,
    "description": "Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.",
    "license": "Apache-2.0",
-   "commit": "c0591105f33bf6e99e0338728c5016121116826a",
+   "commit": "df4477f2753afc65528d2560429a62d33a730d26",
    "top_findings": [],
    "worst_units": [],
    "id": "MEM-01",
@@ -987,10 +963,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "mksglu/context-mode",
    "url": "https://github.com/mksglu/context-mode",
-   "stars": 34423,
+   "stars": 34450,
    "description": "Free, local plugin that keeps tool output out of your coding agent's context window. Sandbox and SQLite FTS5 search, 99% fewer bytes in context. Works with Claude Code, Codex, Pi, OMP, OpenCode, Gemini CLI, Copilot CLI and 4 more agents. Zero telemetry.",
    "license": "NOASSERTION",
-   "commit": "0fe3f5dadfade06758de018a90e6e860274fb8de",
+   "commit": "a2bced6d19ef1836179d070445b32dc5325e5017",
    "top_findings": [],
    "worst_units": [],
    "id": "MEM-02",
@@ -1016,7 +992,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "alchaincyf/nuwa-skill",
    "url": "https://github.com/alchaincyf/nuwa-skill",
-   "stars": 38889,
+   "stars": 38956,
    "description": "你想蒸馏的下一个员工，何必是同事。蒸馏任何人的思维方式——心智模型、决策启发式、表达DNA。Distill how anyone thinks.",
    "license": "MIT",
    "commit": "8944932e35597bbcaf52b807e506c3900d0557c1",
@@ -1045,7 +1021,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "alchaincyf/zhangxuefeng-skill",
    "url": "https://github.com/alchaincyf/zhangxuefeng-skill",
-   "stars": 10816,
+   "stars": 10820,
    "description": "张雪峰.skill — 张雪峰的认知操作系统。高考志愿/考研/职业规划的实战思维框架。由女娲.skill生成。",
    "license": "MIT",
    "commit": "38bbd944e2ecbd7ec0232a7448fcb27ab4710da0",
@@ -1074,7 +1050,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "blader/humanizer",
    "url": "https://github.com/blader/humanizer",
-   "stars": 72749,
+   "stars": 73184,
    "description": "Agent skill that removes signs of AI-generated writing from text",
    "license": "MIT",
    "commit": "a32f24407364c74c812b43c15926d638bee1e072",
@@ -1103,7 +1079,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "obsidianmd/obsidian-skills",
    "url": "https://github.com/obsidianmd/obsidian-skills",
-   "stars": 53558,
+   "stars": 53659,
    "description": "Teach your agent to use Obsidian and open formats including Markdown, Bases, JSON Canvas.",
    "license": "MIT",
    "commit": "b110b2f8e9eb1f287892f937050dfd40af862cbb",
@@ -1135,7 +1111,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "yusufkaraaslan/Skill_Seekers",
    "url": "https://github.com/yusufkaraaslan/Skill_Seekers",
-   "stars": 15362,
+   "stars": 15365,
    "description": "Convert documentation websites, GitHub repositories, and PDFs into Claude AI skills with automatic conflict detection",
    "license": "MIT",
    "commit": "15a67e3c1e7ceb6c63b88f9f3fe480d7b547fe22",
@@ -1164,10 +1140,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "NVIDIA/SkillSpector",
    "url": "https://github.com/NVIDIA/SkillSpector",
-   "stars": 27433,
+   "stars": 27551,
    "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
    "license": "Apache-2.0",
-   "commit": "f9bb13dd1667eb4e7ac97b8ebace3160041ed571",
+   "commit": "0205488a8257869cac3054397ddd5a5d29180aab",
    "top_findings": [],
    "worst_units": [],
    "id": "SEC-01",
@@ -1199,7 +1175,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "aden-hive/hive",
    "url": "https://github.com/aden-hive/hive",
-   "stars": 11166,
+   "stars": 11174,
    "description": "Multi-Agent Harness for Production AI",
    "license": "Apache-2.0",
    "commit": "6703b4343a123469288b1100855a80de90e35536",
@@ -1220,6 +1196,52 @@ window.SKILLSCAN_DATA = {
    ],
    "id": "APP-06",
    "label": "aden-hive/hive"
+  },
+  {
+   "category": "Dev workflow",
+   "score": 99,
+   "verdict": "OK",
+   "units": 10,
+   "skills": 4,
+   "commands": 6,
+   "agents": 0,
+   "hooks": 0,
+   "mcp": 0,
+   "unit_verdicts": {
+    "OK": 10
+   },
+   "clean_units": 8,
+   "caps": [
+    "shell"
+   ],
+   "sev": {
+    "LOW": 2
+   },
+   "rules": [],
+   "stars_bucket": "50k–100k",
+   "repo": "alibaba/open-code-review",
+   "url": "https://github.com/alibaba/open-code-review",
+   "stars": 56048,
+   "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+   "license": "Apache-2.0",
+   "commit": "9007ae84e0de7b84d72f9833f6b12a2a731d5cbd",
+   "top_findings": [],
+   "worst_units": [
+    {
+     "kind": "skill",
+     "name": "open-code-review",
+     "score": 98,
+     "verdict": "OK"
+    },
+    {
+     "kind": "skill",
+     "name": "open-code-review",
+     "score": 98,
+     "verdict": "OK"
+    }
+   ],
+   "id": "DEV-05",
+   "label": "alibaba/open-code-review"
   },
   {
    "category": "Dev workflow",
@@ -1246,7 +1268,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "DietrichGebert/ponytail",
    "url": "https://github.com/DietrichGebert/ponytail",
-   "stars": 197524,
+   "stars": 198063,
    "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
    "license": "MIT",
    "commit": "ebd8654c2c627f721eb8f9c0d1bd4090a29f9e10",
@@ -1288,10 +1310,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "JuliusBrussee/caveman",
    "url": "https://github.com/JuliusBrussee/caveman",
-   "stars": 122421,
+   "stars": 122644,
    "description": "why use many token when few token do trick. Skill + local proxy for coding agents: shorter answers, smaller tool output, every original recoverable.",
    "license": "Apache-2.0",
-   "commit": "b89752f6bca5a26bfde8b019813554241800ca99",
+   "commit": "47c61be2d10a354f0c5cbe2b90959d24c06b16c6",
    "top_findings": [],
    "worst_units": [
     {
@@ -1342,10 +1364,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "google/elephant-goldfish-model",
    "url": "https://github.com/google/elephant-goldfish-model",
-   "stars": 22431,
+   "stars": 22698,
    "description": "Open-source plugin for designing and reviewing software with agents",
    "license": "Apache-2.0",
-   "commit": "ef27af6b1d76901d09bb346eea62ce377546052f",
+   "commit": "63e239d8d4c3ddc6774faf533b4997405f78c549",
    "top_findings": [
     {
      "rule": "tools-bash-any",
@@ -1372,6 +1394,47 @@ window.SKILLSCAN_DATA = {
    ],
    "id": "DEV-08",
    "label": "google/elephant-goldfish-model"
+  },
+  {
+   "category": "Marketing & business",
+   "score": 99,
+   "verdict": "OK",
+   "units": 9,
+   "skills": 8,
+   "commands": 0,
+   "agents": 0,
+   "hooks": 0,
+   "mcp": 1,
+   "unit_verdicts": {
+    "OK": 9
+   },
+   "clean_units": 8,
+   "caps": [
+    "mcp",
+    "network"
+   ],
+   "sev": {
+    "LOW": 1
+   },
+   "rules": [],
+   "stars_bucket": "10k–25k",
+   "repo": "Ryze-AI-Adgent/open-seo-mcp-skills",
+   "url": "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
+   "stars": 10658,
+   "description": "Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your real GSC/GA4/ads data. claude mcp add ryze --transport http https://connector.get-ryze.ai/mcp",
+   "license": "MIT",
+   "commit": "f587b0a69dc1ed92b65cdb241e4f14985b1031fd",
+   "top_findings": [],
+   "worst_units": [
+    {
+     "kind": "mcp",
+     "name": "ryze",
+     "score": 98,
+     "verdict": "OK"
+    }
+   ],
+   "id": "MAR-02",
+   "label": "Ryze-AI-Adgent/open-seo-mcp-skills"
   },
   {
    "category": "Marketing & business",
@@ -1407,7 +1470,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "AgriciDaniel/claude-ads",
    "url": "https://github.com/AgriciDaniel/claude-ads",
-   "stars": 11278,
+   "stars": 11302,
    "description": "Claude-first paid-media operations skill for Claude Code across 12 ad platforms (Google, Meta, YouTube, LinkedIn, TikTok, Microsoft, Apple, Amazon, Reddit, Pinterest, Snapchat, X): source-grounded audits, deterministic findings and evidence coverage, versioned JSON reports, and capability-gated account changes.",
    "license": "MIT",
    "commit": "fc3908e786c318776df89a3a098333da377364be",
@@ -1459,7 +1522,7 @@ window.SKILLSCAN_DATA = {
      "verdict": "OK"
     }
    ],
-   "id": "MAR-02",
+   "id": "MAR-03",
    "label": "AgriciDaniel/claude-ads"
   },
   {
@@ -1486,13 +1549,13 @@ window.SKILLSCAN_DATA = {
    ],
    "sev": {
     "LOW": 64,
-    "MED": 29
+    "MED": 28
    },
    "rules": [
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 15
+     "count": 14
     },
     {
      "rule": "tools-bash-any",
@@ -1518,10 +1581,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "wshobson/agents",
    "url": "https://github.com/wshobson/agents",
-   "stars": 42845,
+   "stars": 42868,
    "description": "Plugins, agents, skills, and commands for Claude Code, Codex CLI, Cursor, OpenCode, Antigravity CLI, GitHub Copilot, and Pi, written once in Markdown and adapted to each tool by generators with validation and evals.",
    "license": "MIT",
-   "commit": "34e50fee32114afd9475f25d81492712f08cb71c",
+   "commit": "c96b5f6552dba32e4492307493ee613581430715",
    "top_findings": [
     {
      "rule": "net-exfil-post",
@@ -1585,14 +1648,6 @@ window.SKILLSCAN_DATA = {
      "sev": "MED",
      "file": "plugins/error-diagnostics/commands/error-trace.md",
      "line": 424,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "plugins/framework-migration/commands/deps-upgrade.md",
-     "line": 565,
      "auto_run": false
     },
     {
@@ -1722,6 +1777,14 @@ window.SKILLSCAN_DATA = {
      "file": "plugins/operating-kit/agents/prod-logs-health-check.md",
      "line": 1,
      "auto_run": false
+    },
+    {
+     "rule": "tools-bash-any",
+     "label": "Unrestricted Bash granted",
+     "sev": "MED",
+     "file": "plugins/operating-kit/agents/session-end.md",
+     "line": 1,
+     "auto_run": false
     }
    ],
    "worst_units": [
@@ -1769,7 +1832,7 @@ window.SKILLSCAN_DATA = {
     },
     {
      "kind": "command",
-     "name": "deps-upgrade",
+     "name": "deps-audit",
      "score": 90,
      "verdict": "OK"
     }
@@ -1810,7 +1873,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "200k+",
    "repo": "obra/superpowers",
    "url": "https://github.com/obra/superpowers",
-   "stars": 325077,
+   "stars": 325792,
    "description": "An agentic skills framework & software development methodology that works.",
    "license": "MIT",
    "commit": "22f0b463e7a5e579904dd6211a520321035526f7",
@@ -1888,10 +1951,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "Egonex-AI/Understand-Anything",
    "url": "https://github.com/Egonex-AI/Understand-Anything",
-   "stars": 93792,
+   "stars": 94126,
    "description": "Graphs that teach > graphs that impress. Turn any code into an interactive knowledge graph you can explore, search, and ask questions about. Works with Claude Code, Codex, Cursor, Copilot, Gemini CLI, and more.",
    "license": "MIT",
-   "commit": "8ec75de1de8c9d2eef685d8d6cbc50782ad31fbb",
+   "commit": "5338971c07a560c5fb6b26d85ad348b01315e2da",
    "top_findings": [
     {
      "rule": "inj-no-confirm",
@@ -1963,7 +2026,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "gamedev-skills/awesome-gamedev-agent-skills",
    "url": "https://github.com/gamedev-skills/awesome-gamedev-agent-skills",
-   "stars": 10600,
+   "stars": 10732,
    "description": "Make games with your AI coding agent: 79 game-dev skills and a router for Godot, Unity, Unreal, Roblox, three.js, Phaser and 6 more engines. Checked on the real engines.",
    "license": "Apache-2.0",
    "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
@@ -2085,10 +2148,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "kajisho5/ffmpeg-skill",
    "url": "https://github.com/kajisho5/ffmpeg-skill",
-   "stars": 10232,
+   "stars": 10676,
    "description": "Local video editor for coding agents: 42 FFmpeg tools with a machine-readable contract and an MCP server, for Claude Code, Cursor and Codex. Cut, captions, reframe, loudness, platform exports. No cloud, no API keys.",
    "license": "MIT",
-   "commit": "bad487c5c4c1d3db52893b27d5ff1278da5274a8",
+   "commit": "c7dad34c846099e7cf606ef943abe5e12d1ab0f9",
    "top_findings": [
     {
      "rule": "sudo",
@@ -2135,7 +2198,7 @@ window.SKILLSCAN_DATA = {
      "label": "Uses sudo",
      "sev": "MED",
      "file": "scripts/_contract.py",
-     "line": 1246,
+     "line": 1247,
      "auto_run": false
     },
     {
@@ -2143,7 +2206,7 @@ window.SKILLSCAN_DATA = {
      "label": "Uses sudo",
      "sev": "MED",
      "file": "scripts/_contract.py",
-     "line": 1253,
+     "line": 1254,
      "auto_run": false
     },
     {
@@ -2151,7 +2214,7 @@ window.SKILLSCAN_DATA = {
      "label": "Uses sudo",
      "sev": "MED",
      "file": "scripts/_contract.py",
-     "line": 1253,
+     "line": 1254,
      "auto_run": false
     }
    ],
@@ -2176,17 +2239,17 @@ window.SKILLSCAN_DATA = {
    "category": "Collections",
    "score": 97,
    "verdict": "OK",
-   "units": 717,
-   "skills": 479,
+   "units": 713,
+   "skills": 478,
    "commands": 0,
-   "agents": 229,
+   "agents": 226,
    "hooks": 1,
    "mcp": 8,
    "unit_verdicts": {
-    "OK": 714,
+    "OK": 710,
     "REVIEW": 3
    },
-   "clean_units": 625,
+   "clean_units": 621,
    "caps": [
     "fs-write",
     "hooks",
@@ -2197,8 +2260,8 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "LOW": 120,
-    "MED": 79,
+    "LOW": 121,
+    "MED": 77,
     "HIGH": 7
    },
    "rules": [
@@ -2215,7 +2278,7 @@ window.SKILLSCAN_DATA = {
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 11
+     "count": 10
     },
     {
      "rule": "pipe-to-shell",
@@ -2240,7 +2303,7 @@ window.SKILLSCAN_DATA = {
     {
      "rule": "mcp-remote",
      "label": "Remote MCP server",
-     "count": 4
+     "count": 3
     },
     {
      "rule": "tools-bash-any",
@@ -2256,10 +2319,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "github/awesome-copilot",
    "url": "https://github.com/github/awesome-copilot",
-   "stars": 41488,
+   "stars": 41524,
    "description": "Community-contributed instructions, agents, skills, and configurations to help you make the most of GitHub Copilot.",
    "license": "MIT",
-   "commit": "f10fdb8b2660ce85c98f220b2f1ca24653768a5c",
+   "commit": "93fc8b9ee3ef56b9b5e7261e6ce92d314cb2c1cf",
    "top_findings": [
     {
      "rule": "inj-override",
@@ -2546,7 +2609,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "ibelick/ui-skills",
    "url": "https://github.com/ibelick/ui-skills",
-   "stars": 11358,
+   "stars": 11386,
    "description": "Skills for Design Engineers",
    "license": "MIT",
    "commit": "7ef0076fce1dfa39dd2bc43b7dc13add6eda8a41",
@@ -2618,7 +2681,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "tirth8205/code-review-graph",
    "url": "https://github.com/tirth8205/code-review-graph",
-   "stars": 32915,
+   "stars": 32934,
    "description": "Local-first code intelligence graph for MCP and CLI. Builds a persistent map of your codebase so AI coding tools read only what matters, with benchmarked context reductions on reviews and large-repo workflows.",
    "license": "MIT",
    "commit": "bbdda4b9e4b4818a9f04d7ef96ac0e50da13f208",
@@ -2648,62 +2711,6 @@ window.SKILLSCAN_DATA = {
    ],
    "id": "DEV-12",
    "label": "tirth8205/code-review-graph"
-  },
-  {
-   "category": "Marketing & business",
-   "score": 97,
-   "verdict": "OK",
-   "units": 9,
-   "skills": 8,
-   "commands": 0,
-   "agents": 0,
-   "hooks": 0,
-   "mcp": 1,
-   "unit_verdicts": {
-    "OK": 9
-   },
-   "clean_units": 8,
-   "caps": [
-    "mcp",
-    "network"
-   ],
-   "sev": {
-    "MED": 1
-   },
-   "rules": [
-    {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "count": 1
-    }
-   ],
-   "stars_bucket": "10k–25k",
-   "repo": "Ryze-AI-Adgent/open-seo-mcp-skills",
-   "url": "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
-   "stars": 10649,
-   "description": "Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your real GSC/GA4/ads data. claude mcp add ryze --transport http https://connector.get-ryze.ai/mcp",
-   "license": "MIT",
-   "commit": "f587b0a69dc1ed92b65cdb241e4f14985b1031fd",
-   "top_findings": [
-    {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "sev": "MED",
-     "file": ".claude-plugin/plugin.json",
-     "line": 1,
-     "auto_run": false
-    }
-   ],
-   "worst_units": [
-    {
-     "kind": "mcp",
-     "name": "ryze",
-     "score": 92,
-     "verdict": "OK"
-    }
-   ],
-   "id": "MAR-03",
-   "label": "Ryze-AI-Adgent/open-seo-mcp-skills"
   },
   {
    "category": "Marketing & business",
@@ -2742,7 +2749,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "coreyhaines31/marketingskills",
    "url": "https://github.com/coreyhaines31/marketingskills",
-   "stars": 62260,
+   "stars": 62464,
    "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
    "license": "MIT",
    "commit": "8fd2fcade2fd6629026e9dfe6d133b55b36968b9",
@@ -2829,6 +2836,69 @@ window.SKILLSCAN_DATA = {
    "category": "Apps & harnesses",
    "score": 96,
    "verdict": "OK",
+   "units": 8,
+   "skills": 7,
+   "commands": 0,
+   "agents": 0,
+   "hooks": 0,
+   "mcp": 1,
+   "unit_verdicts": {
+    "OK": 8
+   },
+   "clean_units": 6,
+   "caps": [
+    "mcp",
+    "network"
+   ],
+   "sev": {
+    "LOW": 3,
+    "MED": 1
+   },
+   "rules": [
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "count": 1
+    }
+   ],
+   "stars_bucket": "10k–25k",
+   "repo": "mcp-use/mcp-use",
+   "url": "https://github.com/mcp-use/mcp-use",
+   "stars": 11005,
+   "description": "The fullstack MCP framework to develop MCP Apps for ChatGPT / Claude & MCP Servers for AI Agents.",
+   "license": "MIT",
+   "commit": "8ff4b865e0e5712c66d5077e93392807daca9354",
+   "top_findings": [
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "skills/openapi-to-mcp/references/auth.md",
+     "line": 119,
+     "auto_run": false
+    }
+   ],
+   "worst_units": [
+    {
+     "kind": "skill",
+     "name": "openapi-to-mcp",
+     "score": 90,
+     "verdict": "OK"
+    },
+    {
+     "kind": "mcp",
+     "name": "mcp-use-docs",
+     "score": 98,
+     "verdict": "OK"
+    }
+   ],
+   "id": "APP-07",
+   "label": "mcp-use/mcp-use"
+  },
+  {
+   "category": "Apps & harnesses",
+   "score": 96,
+   "verdict": "OK",
    "units": 104,
    "skills": 45,
    "commands": 0,
@@ -2880,10 +2950,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "agentscope-ai/QwenPaw",
    "url": "https://github.com/agentscope-ai/QwenPaw",
-   "stars": 38133,
+   "stars": 38178,
    "description": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
    "license": "Apache-2.0",
-   "commit": "2b4e13e3a2df307e6e0ad6affc769137c5ad92d0",
+   "commit": "e64fd38fb773a1f110b46ee26a9b4b34e03b7eb5",
    "top_findings": [
     {
      "rule": "inj-no-confirm",
@@ -3120,7 +3190,7 @@ window.SKILLSCAN_DATA = {
      "verdict": "OK"
     }
    ],
-   "id": "APP-07",
+   "id": "APP-08",
    "label": "agentscope-ai/QwenPaw"
   },
   {
@@ -3148,7 +3218,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "zarazhangrui/frontend-slides",
    "url": "https://github.com/zarazhangrui/frontend-slides",
-   "stars": 32820,
+   "stars": 32852,
    "description": "Create beautiful slides on the web using a coding agent's frontend skills",
    "license": "MIT",
    "commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
@@ -3201,10 +3271,10 @@ window.SKILLSCAN_DATA = {
      "count": 1
     }
    ],
-   "stars_bucket": "<10k",
+   "stars_bucket": "10k–25k",
    "repo": "miqdadbadjuber/anti-slop",
    "url": "https://github.com/miqdadbadjuber/anti-slop",
-   "stars": 9951,
+   "stars": 10062,
    "description": "Rules for an AI coding agent to filter out generic AI-generated UI designs, text, and code.",
    "license": "MIT",
    "commit": "7f6a03df2931c12cb244dc4ab14ee4866b0ac2ba",
@@ -3289,10 +3359,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "cathrynlavery/diagram-design",
    "url": "https://github.com/cathrynlavery/diagram-design",
-   "stars": 70973,
+   "stars": 72024,
    "description": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, Qoder, and Pi. 52 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
    "license": "MIT",
-   "commit": "0eeda75a708f419560d5e032693618bb9954f17b",
+   "commit": "67dbb00176980741a909c84c124f86ef91bbf546",
    "top_findings": [
     {
      "rule": "inj-no-confirm",
@@ -3307,7 +3377,7 @@ window.SKILLSCAN_DATA = {
      "label": "\"Without asking\" phrasing",
      "sev": "MED",
      "file": "skills/diagram-design/references/output-spec.md",
-     "line": 200,
+     "line": 201,
      "auto_run": false
     }
    ],
@@ -3362,9 +3432,9 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "android/skills",
    "url": "https://github.com/android/skills",
-   "stars": 10721,
-   "description": "",
-   "license": "Apache-2.0",
+   "stars": 10743,
+   "description": "skills",
+   "license": "2026-11-23T13:39:36Z",
    "commit": "7f7b21730a605d112ca9f79b6e40105ce7b670ee",
    "top_findings": [
     {
@@ -3495,10 +3565,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "shanraisshan/claude-code-best-practice",
    "url": "https://github.com/shanraisshan/claude-code-best-practice",
-   "stars": 69362,
+   "stars": 69380,
    "description": "from vibe coding to agentic engineering - practice makes claude perfect",
    "license": "MIT",
-   "commit": "e7367a6a6471dc3f5d77314ea0ea0c3acde5e837",
+   "commit": "ac1f392d5f7151eaa80877e6417ce3bcc2fde8e1",
    "top_findings": [
     {
      "rule": "inj-skip-perms",
@@ -3633,7 +3703,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "AgriciDaniel/claude-obsidian",
    "url": "https://github.com/AgriciDaniel/claude-obsidian",
-   "stars": 16720,
+   "stars": 16739,
    "description": "Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.",
    "license": "MIT",
    "commit": "2e545563172f97f02ecaaaab376ceea1246a0583",
@@ -3734,9 +3804,9 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "anthropics/skills",
    "url": "https://github.com/anthropics/skills",
-   "stars": 199487,
+   "stars": 199966,
    "description": "Public repository for Agent Skills",
-   "license": "",
+   "license": "2026-11-16T14:22:50Z",
    "commit": "e4bb5d960d87126ff3b3a8af1a104b7db67560ba",
    "top_findings": [
     {
@@ -3908,10 +3978,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "asgeirtj/system_prompts_leaks",
    "url": "https://github.com/asgeirtj/system_prompts_leaks",
-   "stars": 72515,
+   "stars": 72583,
    "description": "Leaked system prompts of ChatGPT, Claude, Gemini and more. The hidden system prompt of every popular chatbot, in full, every version since May 2025. Also Anthropic Claude Code, OpenAI Codex, Google Antigravity, xAI Grok, Meta Muse, Moonshot Kimi, Alibaba Qwen, Z.ai GLM ZCode, MiniMax, Cursor, Perplexity, DeepSeek and 30+ others. Updated daily.",
    "license": "CC0-1.0",
-   "commit": "97dbd2fcee7a6a48eecc16003b6a2b9dde3dd82d",
+   "commit": "74761cc521a4ea73a603b54e7465e057de8ced19",
    "top_findings": [
     {
      "rule": "inj-skip-perms",
@@ -4191,7 +4261,7 @@ window.SKILLSCAN_DATA = {
    ],
    "sev": {
     "LOW": 416,
-    "MED": 263,
+    "MED": 261,
     "HIGH": 13
    },
    "rules": [
@@ -4203,7 +4273,7 @@ window.SKILLSCAN_DATA = {
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 31
+     "count": 29
     },
     {
      "rule": "inj-no-confirm",
@@ -4234,7 +4304,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "200k+",
    "repo": "affaan-m/ECC",
    "url": "https://github.com/affaan-m/ECC",
-   "stars": 309588,
+   "stars": 310210,
    "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
    "license": "MIT",
    "commit": "4adeee6732a12d1540f49a4d50a38ce8c97f9a53",
@@ -4494,82 +4564,6 @@ window.SKILLSCAN_DATA = {
    "label": "affaan-m/ECC"
   },
   {
-   "category": "Apps & harnesses",
-   "score": 94,
-   "verdict": "OK",
-   "units": 8,
-   "skills": 7,
-   "commands": 0,
-   "agents": 0,
-   "hooks": 0,
-   "mcp": 1,
-   "unit_verdicts": {
-    "OK": 8
-   },
-   "clean_units": 6,
-   "caps": [
-    "mcp",
-    "network"
-   ],
-   "sev": {
-    "LOW": 2,
-    "MED": 2
-   },
-   "rules": [
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "count": 1
-    },
-    {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "count": 1
-    }
-   ],
-   "stars_bucket": "10k–25k",
-   "repo": "mcp-use/mcp-use",
-   "url": "https://github.com/mcp-use/mcp-use",
-   "stars": 11003,
-   "description": "The fullstack MCP framework to develop MCP Apps for ChatGPT / Claude & MCP Servers for AI Agents.",
-   "license": "MIT",
-   "commit": "8ff4b865e0e5712c66d5077e93392807daca9354",
-   "top_findings": [
-    {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "sev": "MED",
-     "file": ".mcp.json",
-     "line": 1,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "skills/openapi-to-mcp/references/auth.md",
-     "line": 119,
-     "auto_run": false
-    }
-   ],
-   "worst_units": [
-    {
-     "kind": "skill",
-     "name": "openapi-to-mcp",
-     "score": 90,
-     "verdict": "OK"
-    },
-    {
-     "kind": "mcp",
-     "name": "mcp-use-docs",
-     "score": 92,
-     "verdict": "OK"
-    }
-   ],
-   "id": "APP-08",
-   "label": "mcp-use/mcp-use"
-  },
-  {
    "category": "Browser & devices",
    "score": 94,
    "verdict": "OK",
@@ -4601,10 +4595,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "mobile-next/mobile-mcp",
    "url": "https://github.com/mobile-next/mobile-mcp",
-   "stars": 10829,
+   "stars": 10855,
    "description": "Mobile MCP: let AI agents drive your iOS and Android apps. MCP server for simulators, emulators and real devices. Works with Claude Code, Codex, Cursor and any MCP client.",
    "license": "Apache-2.0",
-   "commit": "5cdc2f3633a4a910cb79410990a12cb3893e93bc",
+   "commit": "6747dff92f61a48f2f8b4620236876f54a7779fc",
    "top_findings": [
     {
      "rule": "mcp-unpinned",
@@ -4678,10 +4672,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
    "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
-   "stars": 153290,
+   "stars": 153755,
    "description": "An AI skill that provides design intelligence for building professional UI/UX across multiple platforms.",
    "license": "MIT",
-   "commit": "e8b065f0f3aaf2e680fd125f000e4f5e351ed108",
+   "commit": "8db36338810d0942567b97ce439affd1619fcf31",
    "top_findings": [
     {
      "rule": "mcp-unpinned",
@@ -4772,7 +4766,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Dev workflow",
    "score": 94,
-   "verdict": "REVIEW",
+   "verdict": "OK",
    "units": 42,
    "skills": 26,
    "commands": 10,
@@ -4781,7 +4775,7 @@ window.SKILLSCAN_DATA = {
    "mcp": 0,
    "unit_verdicts": {
     "OK": 41,
-    "BLOCK": 1
+    "CAUTION": 1
    },
    "clean_units": 35,
    "caps": [
@@ -4815,10 +4809,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "addyosmani/agent-skills",
    "url": "https://github.com/addyosmani/agent-skills",
-   "stars": 120003,
+   "stars": 120205,
    "description": "Production-grade engineering skills for AI coding agents.",
    "license": "MIT",
-   "commit": "8c99fa36d90068c82d547f7c12a9d67a3e95f4ee",
+   "commit": "e997ac5b9a74eab332d5e9793bb38a38c8cfdd74",
    "top_findings": [
     {
      "rule": "inj-override",
@@ -4858,7 +4852,7 @@ window.SKILLSCAN_DATA = {
      "kind": "hooks",
      "name": "hooks",
      "score": 67,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
@@ -4951,7 +4945,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "luongnv89/claude-howto",
    "url": "https://github.com/luongnv89/claude-howto",
-   "stars": 47544,
+   "stars": 47568,
    "description": "A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-paste templates that bring immediate value.",
    "license": "MIT",
    "commit": "5609e68a6ce838579e15fd31ceb6025be08841df",
@@ -5247,7 +5241,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "HKUSTDial/Supervisor-Skills",
    "url": "https://github.com/HKUSTDial/Supervisor-Skills",
-   "stars": 13386,
+   "stars": 13493,
    "description": "将博导十年科研经验炼化为可直接调用的 AI 技能。从 Idea 构思到论文投稿，你的 AI 科研副导师。",
    "license": "NOASSERTION",
    "commit": "364d96236dab51eacbeb45bcfb56ebd7e3938d5c",
@@ -5347,10 +5341,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "Imbad0202/academic-research-skills",
    "url": "https://github.com/Imbad0202/academic-research-skills",
-   "stars": 58264,
+   "stars": 58423,
    "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
    "license": "NOASSERTION",
-   "commit": "1d42587c373890394edf0d0f9976069e13804b34",
+   "commit": "df5b4ca2f16fbda18cdecc5927fca384f2b6c002",
    "top_findings": [
     {
      "rule": "inj-no-confirm",
@@ -5478,7 +5472,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "decolua/9router",
    "url": "https://github.com/decolua/9router",
-   "stars": 32796,
+   "stars": 32818,
    "description": "Unlimited FREE AI coding. Connect Claude Code, Codex, Cursor, Cline, Copilot, Antigravity to FREE Claude/GPT/Gemini via 40+ providers. Auto-fallback, RTK -40% tokens, never hit limits.",
    "license": "MIT",
    "commit": "5ae63d22847e07042e235b40e1d926b65e509013",
@@ -5612,10 +5606,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "ai-job-search-dev/ai-job-search",
    "url": "https://github.com/ai-job-search-dev/ai-job-search",
-   "stars": 73143,
+   "stars": 73304,
    "description": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
    "license": "MIT",
-   "commit": "ab51f852316faca85fe6ce93cccd7ac58b9c20df",
+   "commit": "4e021e52f7e3d4016e0c22fc416c814a3d44c5c9",
    "top_findings": [
     {
      "rule": "inj-no-confirm",
@@ -5733,7 +5727,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "citrolabs/ego-lite",
    "url": "https://github.com/citrolabs/ego-lite",
-   "stars": 24180,
+   "stars": 24372,
    "description": "The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
    "license": "MIT",
    "commit": "f499162d1b911ba9b320ed31b741dba7ebc2e4d6",
@@ -5789,7 +5783,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Collections",
    "score": 92,
-   "verdict": "REVIEW",
+   "verdict": "CAUTION",
    "units": 830,
    "skills": 501,
    "commands": 191,
@@ -5798,8 +5792,9 @@ window.SKILLSCAN_DATA = {
    "mcp": 2,
    "unit_verdicts": {
     "OK": 825,
-    "BLOCK": 3,
-    "REVIEW": 2
+    "CAUTION": 2,
+    "REVIEW": 2,
+    "BLOCK": 1
    },
    "clean_units": 635,
    "caps": [
@@ -5813,20 +5808,15 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "MED": 178,
+    "MED": 172,
     "LOW": 249,
-    "HIGH": 51
+    "HIGH": 46
    },
    "rules": [
     {
      "rule": "tools-bash-any",
      "label": "Unrestricted Bash granted",
      "count": 105
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "count": 27
     },
     {
      "rule": "dyn-exec",
@@ -5842,6 +5832,11 @@ window.SKILLSCAN_DATA = {
      "rule": "inj-skip-perms",
      "label": "Permission bypass",
      "count": 21
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "count": 15
     },
     {
      "rule": "secret-paths",
@@ -5884,6 +5879,11 @@ window.SKILLSCAN_DATA = {
      "count": 1
     },
     {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "count": 1
+    },
+    {
      "rule": "mcp-remote",
      "label": "Remote MCP server",
      "count": 1
@@ -5892,11 +5892,19 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "alirezarezvani/claude-skills",
    "url": "https://github.com/alirezarezvani/claude-skills",
-   "stars": 30360,
+   "stars": 30432,
    "description": "410 Claude Code skills & agent skills & plugins (120+ Agents, custom commands, 410+ skills, customizable references, scripts)for Claude Code, Codex, Gemini CLI, Cursor, and 8 more coding agents — engineering, marketing, product, compliance, C-level advisory, research, business operations, commercial & finance, and your daily productivity skills.",
    "license": "MIT",
    "commit": "ea7b5ab8da93bbba8880152d9ccb8c9979f12252",
    "top_findings": [
+    {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "sev": "HIGH",
+     "file": "engineering/skills/skill-security-auditor/SKILL.md",
+     "line": 38,
+     "auto_run": false
+    },
     {
      "rule": "hidden-unicode",
      "label": "Hidden unicode",
@@ -6053,14 +6061,6 @@ window.SKILLSCAN_DATA = {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
      "sev": "HIGH",
-     "file": "engineering/docker-development/skills/docker-development/scripts/dockerfile_analyzer.py",
-     "line": 135,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "HIGH",
      "file": "engineering/skills/coding-agent-rollout/scripts/settings_linter.py",
      "line": 117,
      "auto_run": false
@@ -6085,16 +6085,16 @@ window.SKILLSCAN_DATA = {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
      "sev": "HIGH",
-     "file": "engineering/skills/migration-architect/scripts/rollback_generator.py",
-     "line": 186,
+     "file": "engineering/skills/skill-security-auditor/SKILL.md",
+     "line": 38,
      "auto_run": false
     },
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
      "sev": "HIGH",
-     "file": "engineering/skills/migration-architect/scripts/rollback_generator.py",
-     "line": 189,
+     "file": "engineering/skills/tech-debt-tracker/assets/sample_codebase/src/frontend.js",
+     "line": 355,
      "auto_run": false
     }
    ],
@@ -6103,13 +6103,13 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "coding-agent-rollout",
      "score": 0,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
      "name": "coding-agent-rollout",
      "score": 0,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
@@ -6136,15 +6136,15 @@ window.SKILLSCAN_DATA = {
      "verdict": "OK"
     },
     {
-     "kind": "command",
-     "name": "cs-handoff",
-     "score": 78,
+     "kind": "skill",
+     "name": "migration-architect",
+     "score": 77,
      "verdict": "OK"
     },
     {
-     "kind": "skill",
-     "name": "i18n-localization",
-     "score": 80,
+     "kind": "command",
+     "name": "cs-handoff",
+     "score": 78,
      "verdict": "OK"
     }
    ],
@@ -6182,7 +6182,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "DayuanJiang/next-ai-draw-io",
    "url": "https://github.com/DayuanJiang/next-ai-draw-io",
-   "stars": 37143,
+   "stars": 37163,
    "description": "Draw and edit draw.io diagrams by chatting with an AI. Web app, desktop app, and an MCP server for Claude Code, Cursor, Codex and VS Code.",
    "license": "Apache-2.0",
    "commit": "9534a668e3bd53f9c08aa5b8d2d77f409ccd09d4",
@@ -6237,7 +6237,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "op7418/guizang-ppt-skill",
    "url": "https://github.com/op7418/guizang-ppt-skill",
-   "stars": 30315,
+   "stars": 30370,
    "description": "AI-agent Skill for generating polished HTML slide decks: editorial magazine and Swiss layouts, image prompts, social covers, and a WebGL/low-power presentation runtime.",
    "license": "AGPL-3.0",
    "commit": "93d21bf4a73a851907a6eb00acbf30618236667a",
@@ -6292,7 +6292,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "nidhinjs/prompt-master",
    "url": "https://github.com/nidhinjs/prompt-master",
-   "stars": 16272,
+   "stars": 16301,
    "description": "A Claude skill that writes the accurate prompts for any AI tool. Zero tokens or credits wasted. Full context and memory retention",
    "license": "MIT",
    "commit": "49b3a72469b1e7287d66387004ccfcca90e5968a",
@@ -6357,7 +6357,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "AgriciDaniel/claude-seo",
    "url": "https://github.com/AgriciDaniel/claude-seo",
-   "stars": 31936,
+   "stars": 32186,
    "description": "Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.",
    "license": "MIT",
    "commit": "468ed5b0d9e3249394783710e54abb02837e326b",
@@ -6632,7 +6632,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "KKKKhazix/khazix-skills",
    "url": "https://github.com/KKKKhazix/khazix-skills",
-   "stars": 22486,
+   "stars": 22520,
    "description": "数字生命卡兹克开源的 AI Skills 合集 | Agent Skills: leader（帮你定义目标）, neat-freak 洁癖, hv-analysis, khazix-writer & more — Claude Code, Codex & 40+ agents",
    "license": "MIT",
    "commit": "76fc0f8e8245b40a809d8eed89b27f04cbcf81bb",
@@ -6957,7 +6957,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Dev workflow",
    "score": 91,
-   "verdict": "OK",
+   "verdict": "CAUTION",
    "units": 229,
    "skills": 225,
    "commands": 0,
@@ -6966,7 +6966,8 @@ window.SKILLSCAN_DATA = {
    "mcp": 4,
    "unit_verdicts": {
     "OK": 222,
-    "REVIEW": 7
+    "REVIEW": 6,
+    "BLOCK": 1
    },
    "clean_units": 153,
    "caps": [
@@ -6979,9 +6980,9 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "LOW": 173,
-    "MED": 45,
-    "HIGH": 21
+    "LOW": 177,
+    "MED": 41,
+    "HIGH": 20
    },
    "rules": [
     {
@@ -6997,17 +6998,12 @@ window.SKILLSCAN_DATA = {
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 10
+     "count": 9
     },
     {
      "rule": "sudo",
      "label": "Uses sudo",
      "count": 7
-    },
-    {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "count": 4
     },
     {
      "rule": "pipe-to-shell",
@@ -7038,10 +7034,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "google/skills",
    "url": "https://github.com/google/skills",
-   "stars": 24586,
+   "stars": 24621,
    "description": "Agent Skills for Google products and technologies",
    "license": "Apache-2.0",
-   "commit": "8123e483e83712ec98ba27c9fb1a3e38aa9f6a1c",
+   "commit": "a6782daef41b064c659f0b16cb46609cf4b8211d",
    "top_findings": [
     {
      "rule": "b64-decode-exec",
@@ -7081,14 +7077,6 @@ window.SKILLSCAN_DATA = {
      "sev": "HIGH",
      "file": "skills/cloud/google-cloud-solution-multi-agent-security/scripts/verify_egress_policies.py",
      "line": 26,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "HIGH",
-     "file": "skills/cloud/secops-triage/references/04_endpoint_auditd_vss_and_linux_containers.md",
-     "line": 152,
      "auto_run": false
     },
     {
@@ -7242,6 +7230,14 @@ window.SKILLSCAN_DATA = {
      "file": "skills/cloud/agent-platform-agent-registry/SKILL.md",
      "line": 43,
      "auto_run": false
+    },
+    {
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
+     "sev": "MED",
+     "file": "skills/cloud/agent-platform-inference/SKILL.md",
+     "line": 174,
+     "auto_run": false
     }
    ],
    "worst_units": [
@@ -7261,7 +7257,7 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "google-cloud-filestore-nfs-browser",
      "score": 64,
-     "verdict": "REVIEW"
+     "verdict": "BLOCK"
     },
     {
      "kind": "skill",
@@ -7321,7 +7317,7 @@ window.SKILLSCAN_DATA = {
    ],
    "sev": {
     "LOW": 93,
-    "MED": 40,
+    "MED": 39,
     "HIGH": 4
    },
    "rules": [
@@ -7331,13 +7327,13 @@ window.SKILLSCAN_DATA = {
      "count": 19
     },
     {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "count": 7
-    },
-    {
      "rule": "inj-role",
      "label": "Fake role markers",
+     "count": 6
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
      "count": 6
     },
     {
@@ -7369,7 +7365,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "Orchestra-Research/AI-Research-SKILLs",
    "url": "https://github.com/Orchestra-Research/AI-Research-SKILLs",
-   "stars": 14771,
+   "stars": 14802,
    "description": "Comprehensive open-source library of AI research and engineering skills for any AI model. Package the skills and your claude code/codex/gemini agent will be an AI research agent with full horsepower. Maintained by Orchestra Research.",
    "license": "MIT",
    "commit": "773a52944ba4747a18bd4ae9ade53fff041adcbc",
@@ -7460,14 +7456,6 @@ window.SKILLSCAN_DATA = {
      "sev": "MED",
      "file": "03-fine-tuning/axolotl/references/dataset-formats.md",
      "line": 823,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "12-inference-serving/vllm/references/server-deployment.md",
-     "line": 232,
      "auto_run": false
     },
     {
@@ -7573,6 +7561,14 @@ window.SKILLSCAN_DATA = {
      "file": "09-infrastructure/lambda-labs/SKILL.md",
      "line": 295,
      "auto_run": false
+    },
+    {
+     "rule": "secret-paths",
+     "label": "Credential-store paths",
+     "sev": "MED",
+     "file": "09-infrastructure/lambda-labs/SKILL.md",
+     "line": 305,
+     "auto_run": false
     }
    ],
    "worst_units": [
@@ -7614,14 +7610,14 @@ window.SKILLSCAN_DATA = {
     },
     {
      "kind": "skill",
-     "name": "serving-llms-vllm",
+     "name": "phoenix-observability",
      "score": 86,
      "verdict": "OK"
     },
     {
      "kind": "skill",
-     "name": "phoenix-observability",
-     "score": 86,
+     "name": "skypilot-multi-cloud-orchestration",
+     "score": 87,
      "verdict": "OK"
     }
    ],
@@ -7659,7 +7655,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "shareAI-lab/learn-claude-code",
    "url": "https://github.com/shareAI-lab/learn-claude-code",
-   "stars": 80799,
+   "stars": 80847,
    "description": "Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1",
    "license": "MIT",
    "commit": "448c75bb596917ad196cc1fb7558f459c5c50fdd",
@@ -7739,7 +7735,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "jarrodwatts/claude-hud",
    "url": "https://github.com/jarrodwatts/claude-hud",
-   "stars": 29291,
+   "stars": 29299,
    "description": "A Claude Code plugin that shows what's happening - context usage, active tools, running agents, and todo progress",
    "license": "MIT",
    "commit": "5fc08cbb610a7439993e40124637cbe193d60ea3",
@@ -7768,17 +7764,17 @@ window.SKILLSCAN_DATA = {
    "category": "Collections",
    "score": 89,
    "verdict": "OK",
-   "units": 134,
-   "skills": 57,
+   "units": 147,
+   "skills": 62,
    "commands": 33,
-   "agents": 37,
+   "agents": 45,
    "hooks": 1,
    "mcp": 6,
    "unit_verdicts": {
-    "OK": 129,
+    "OK": 142,
     "REVIEW": 5
    },
-   "clean_units": 77,
+   "clean_units": 82,
    "caps": [
     "fs-write",
     "hooks",
@@ -7789,15 +7785,15 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "LOW": 155,
-    "MED": 51,
+    "LOW": 163,
+    "MED": 54,
     "HIGH": 9
    },
    "rules": [
     {
      "rule": "tools-bash-any",
      "label": "Unrestricted Bash granted",
-     "count": 20
+     "count": 24
     },
     {
      "rule": "dyn-exec",
@@ -7825,11 +7821,6 @@ window.SKILLSCAN_DATA = {
      "count": 2
     },
     {
-     "rule": "mcp-remote",
-     "label": "Remote MCP server",
-     "count": 2
-    },
-    {
      "rule": "rm-rf-broad",
      "label": "Broad recursive delete",
      "count": 1
@@ -7838,15 +7829,20 @@ window.SKILLSCAN_DATA = {
      "rule": "secret-paths",
      "label": "Credential-store paths",
      "count": 1
+    },
+    {
+     "rule": "mcp-remote",
+     "label": "Remote MCP server",
+     "count": 1
     }
    ],
    "stars_bucket": "25k–50k",
    "repo": "anthropics/claude-plugins-official",
    "url": "https://github.com/anthropics/claude-plugins-official",
-   "stars": 48062,
+   "stars": 48123,
    "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
    "license": "Apache-2.0",
-   "commit": "5cec6716767283f4675a05f5f8855b5b49c81783",
+   "commit": "6985b2d88dc08b4a0d202f5f0301f02e360b9cb1",
    "top_findings": [
     {
      "rule": "inj-override",
@@ -7925,7 +7921,7 @@ window.SKILLSCAN_DATA = {
      "label": "Shell runs on command invoke",
      "sev": "MED",
      "file": "plugins/claude-security/skills/claude-security/SKILL.md",
-     "line": 32,
+     "line": 17,
      "auto_run": false
     },
     {
@@ -7933,7 +7929,7 @@ window.SKILLSCAN_DATA = {
      "label": "Shell runs on command invoke",
      "sev": "MED",
      "file": "plugins/claude-security/skills/claude-security/SKILL.md",
-     "line": 67,
+     "line": 62,
      "auto_run": false
     },
     {
@@ -8126,7 +8122,7 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "MED": 50,
+    "MED": 44,
     "LOW": 95,
     "HIGH": 4
    },
@@ -8134,7 +8130,7 @@ window.SKILLSCAN_DATA = {
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 37
+     "count": 31
     },
     {
      "rule": "tools-bash-any",
@@ -8165,7 +8161,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "Jeffallan/claude-skills",
    "url": "https://github.com/Jeffallan/claude-skills",
-   "stars": 12500,
+   "stars": 12513,
    "description": "71 Specialized Skills for Full-Stack Developers. Transform Claude Code into your expert pair programmer.",
    "license": "MIT",
    "commit": "d98d06edb54c25cfb94017c0ef830342a34a43ba",
@@ -8294,46 +8290,6 @@ window.SKILLSCAN_DATA = {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
      "sev": "MED",
-     "file": "plugin/skills/devops-engineer/SKILL.md",
-     "line": 127,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "plugin/skills/devops-engineer/SKILL.md",
-     "line": 140,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "plugin/skills/devops-engineer/references/deployment-strategies.md",
-     "line": 133,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "plugin/skills/devops-engineer/references/incident-response.md",
-     "line": 188,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "plugin/skills/devops-engineer/references/release-automation.md",
-     "line": 406,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
      "file": "plugin/skills/django-storages-s3/references/presigned-urls.md",
      "line": 87,
      "auto_run": false
@@ -8369,15 +8325,49 @@ window.SKILLSCAN_DATA = {
      "file": "plugin/skills/fullstack-guardian/references/common-patterns.md",
      "line": 17,
      "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "plugin/skills/graphql-architect/references/security.md",
+     "line": 547,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "plugin/skills/javascript-pro/references/browser-apis.md",
+     "line": 11,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "plugin/skills/javascript-pro/references/browser-apis.md",
+     "line": 50,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "plugin/skills/nuxt-expert/references/security.md",
+     "line": 147,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "plugin/skills/secure-code-guardian/references/xss-csrf.md",
+     "line": 96,
+     "auto_run": false
     }
    ],
    "worst_units": [
-    {
-     "kind": "skill",
-     "name": "kubernetes-specialist",
-     "score": 66,
-     "verdict": "REVIEW"
-    },
     {
      "kind": "skill",
      "name": "nuxt-expert",
@@ -8392,9 +8382,9 @@ window.SKILLSCAN_DATA = {
     },
     {
      "kind": "skill",
-     "name": "devops-engineer",
-     "score": 76,
-     "verdict": "OK"
+     "name": "kubernetes-specialist",
+     "score": 74,
+     "verdict": "REVIEW"
     },
     {
      "kind": "skill",
@@ -8417,6 +8407,12 @@ window.SKILLSCAN_DATA = {
     {
      "kind": "skill",
      "name": "javascript-pro",
+     "score": 87,
+     "verdict": "OK"
+    },
+    {
+     "kind": "skill",
+     "name": "security-reviewer",
      "score": 87,
      "verdict": "OK"
     }
@@ -8474,7 +8470,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "Donchitos/Claude-Code-Game-Studios",
    "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
-   "stars": 40729,
+   "stars": 40829,
    "description": "Turn Claude Code into a full game dev studio — 49 AI agents, 75 workflow skills, and a complete coordination system mirroring real studio hierarchy.",
    "license": "MIT",
    "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
@@ -8766,7 +8762,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "alibaba/nacos",
    "url": "https://github.com/alibaba/nacos",
-   "stars": 33534,
+   "stars": 33536,
    "description": "an easy-to-use dynamic service discovery, configuration and service management platform for building AI cloud native applications.",
    "license": "Apache-2.0",
    "commit": "73158dfdd6ecade463a27597dbaedde4578deb6a",
@@ -8822,7 +8818,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "emilkowalski/skills",
    "url": "https://github.com/emilkowalski/skills",
-   "stars": 59089,
+   "stars": 59299,
    "description": "Skills for Designers and Engineers.",
    "license": "MIT",
    "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
@@ -8912,7 +8908,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Memory & context",
    "score": 86,
-   "verdict": "REVIEW",
+   "verdict": "OK",
    "units": 13,
    "skills": 6,
    "commands": 6,
@@ -8921,7 +8917,7 @@ window.SKILLSCAN_DATA = {
    "mcp": 0,
    "unit_verdicts": {
     "OK": 12,
-    "BLOCK": 1
+    "CAUTION": 1
    },
    "clean_units": 11,
    "caps": [
@@ -8949,10 +8945,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "EverMind-AI/EverOS",
    "url": "https://github.com/EverMind-AI/EverOS",
-   "stars": 13980,
+   "stars": 13996,
    "description": "One portable memory layer for every AI agent: local-first, Markdown-native, user-owned, and self-evolving across apps, tools, and workflows.",
    "license": "Apache-2.0",
-   "commit": "f47683620be9475ecab70f95795d7418b0352742",
+   "commit": "6ac3898e7755dfc41002bfdc9704279009a82b81",
    "top_findings": [
     {
      "rule": "net-exfil-post",
@@ -9000,7 +8996,7 @@ window.SKILLSCAN_DATA = {
      "kind": "hooks",
      "name": "hooks",
      "score": 40,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
@@ -9058,10 +9054,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "rtk-ai/rtk",
    "url": "https://github.com/rtk-ai/rtk",
-   "stars": 87610,
+   "stars": 87716,
    "description": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies",
    "license": "Apache-2.0",
-   "commit": "c43b5c44945bbf861794e8d0683a14a5456004a8",
+   "commit": "9a94ec19463a957ecd8f22c89c15934a9c0bf9ec",
    "top_findings": [
     {
      "rule": "persistence",
@@ -9240,7 +9236,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "microsoft/SkillOpt",
    "url": "https://github.com/microsoft/SkillOpt",
-   "stars": 19193,
+   "stars": 19203,
    "description": "SkillOpt is a text-space optimizer that trains reusable natural-language skills for frozen LLM agents through trajectory-driven edits, validation-gated updates, and deployable best_skill.md artifacts.",
    "license": "MIT",
    "commit": "dc0b5e654cafa1073a2819086151c1e0d13012f0",
@@ -9294,7 +9290,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Security",
    "score": 84,
-   "verdict": "OK",
+   "verdict": "CAUTION",
    "units": 818,
    "skills": 818,
    "commands": 0,
@@ -9302,8 +9298,9 @@ window.SKILLSCAN_DATA = {
    "hooks": 0,
    "mcp": 0,
    "unit_verdicts": {
-    "OK": 777,
-    "REVIEW": 41
+    "OK": 776,
+    "REVIEW": 38,
+    "BLOCK": 4
    },
    "clean_units": 255,
    "caps": [
@@ -9316,14 +9313,14 @@ window.SKILLSCAN_DATA = {
    ],
    "sev": {
     "LOW": 2249,
-    "HIGH": 251,
-    "MED": 389
+    "HIGH": 254,
+    "MED": 388
    },
    "rules": [
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 351
+     "count": 350
     },
     {
      "rule": "sudo",
@@ -9366,6 +9363,11 @@ window.SKILLSCAN_DATA = {
      "count": 6
     },
     {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "count": 3
+    },
+    {
      "rule": "token-literal",
      "label": "Token-shaped literal",
      "count": 3
@@ -9399,11 +9401,35 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "mukul975/Anthropic-Cybersecurity-Skills",
    "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
-   "stars": 36634,
+   "stars": 36703,
    "description": "817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF & MITRE F3 (Fight Fraud) · agentskills.io standard · Works with Claude Code, GitHub Copilot, Codex CLI, Cursor, Gemini CLI & 20+ platforms · 29 security domains · Apache 2.0",
    "license": "Apache-2.0",
    "commit": "54a798831d2266a3ca61ce68a7acb80b81160d57",
    "top_findings": [
+    {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "sev": "HIGH",
+     "file": "skills/deploying-honeytokens-and-canarytokens/SKILL.md",
+     "line": 165,
+     "auto_run": false
+    },
+    {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "sev": "HIGH",
+     "file": "skills/implementing-canary-tokens-for-network-intrusion/SKILL.md",
+     "line": 101,
+     "auto_run": false
+    },
+    {
+     "rule": "exfil-combo",
+     "label": "Reads secrets + sends to undeclared host",
+     "sev": "HIGH",
+     "file": "skills/implementing-honeytokens-for-breach-detection/SKILL.md",
+     "line": 60,
+     "auto_run": false
+    },
     {
      "rule": "hidden-unicode",
      "label": "Hidden unicode",
@@ -9579,43 +9605,31 @@ window.SKILLSCAN_DATA = {
      "file": "skills/building-detection-rule-with-splunk-spl/scripts/agent.py",
      "line": 96,
      "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "HIGH",
-     "file": "skills/building-devsecops-pipeline-with-gitlab-ci/scripts/agent.py",
-     "line": 84,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "HIGH",
-     "file": "skills/building-identity-governance-lifecycle-process/scripts/agent.py",
-     "line": 15,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "HIGH",
-     "file": "skills/building-incident-response-playbook/scripts/agent.py",
-     "line": 145,
-     "auto_run": false
     }
    ],
    "worst_units": [
     {
      "kind": "skill",
-     "name": "analyzing-persistence-mechanisms-in-linux",
-     "score": 41,
-     "verdict": "REVIEW"
+     "name": "implementing-canary-tokens-for-network-intrusion",
+     "score": 24,
+     "verdict": "BLOCK"
     },
     {
      "kind": "skill",
-     "name": "implementing-canary-tokens-for-network-intrusion",
-     "score": 44,
+     "name": "deploying-honeytokens-and-canarytokens",
+     "score": 38,
+     "verdict": "BLOCK"
+    },
+    {
+     "kind": "skill",
+     "name": "implementing-honeytokens-for-breach-detection",
+     "score": 38,
+     "verdict": "BLOCK"
+    },
+    {
+     "kind": "skill",
+     "name": "analyzing-persistence-mechanisms-in-linux",
+     "score": 41,
      "verdict": "REVIEW"
     },
     {
@@ -9640,18 +9654,6 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "performing-linux-log-forensics-investigation",
      "score": 57,
-     "verdict": "REVIEW"
-    },
-    {
-     "kind": "skill",
-     "name": "performing-privilege-escalation-on-linux",
-     "score": 57,
-     "verdict": "REVIEW"
-    },
-    {
-     "kind": "skill",
-     "name": "deploying-honeytokens-and-canarytokens",
-     "score": 58,
      "verdict": "REVIEW"
     }
    ],
@@ -9689,10 +9691,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "virgiliojr94/book-to-skill",
    "url": "https://github.com/virgiliojr94/book-to-skill",
-   "stars": 38870,
+   "stars": 38961,
    "description": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
    "license": "MIT",
-   "commit": "57f3db51ff338edfd940a255b885c60ac90e40fa",
+   "commit": "79b3fa66d249635453f8e9bc517fe033ac9d5a91",
    "top_findings": [
     {
      "rule": "sudo",
@@ -9731,7 +9733,7 @@ window.SKILLSCAN_DATA = {
      "label": "Uses sudo",
      "sev": "MED",
      "file": "book_to_skill/utils.py",
-     "line": 1662,
+     "line": 1694,
      "auto_run": false
     }
    ],
@@ -9760,7 +9762,7 @@ window.SKILLSCAN_DATA = {
     "OK": 73,
     "REVIEW": 6
    },
-   "clean_units": 23,
+   "clean_units": 22,
    "caps": [
     "fs-write",
     "injection-surface",
@@ -9772,7 +9774,7 @@ window.SKILLSCAN_DATA = {
    "sev": {
     "LOW": 485,
     "HIGH": 3,
-    "MED": 99
+    "MED": 96
    },
    "rules": [
     {
@@ -9786,13 +9788,13 @@ window.SKILLSCAN_DATA = {
      "count": 20
     },
     {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "count": 15
-    },
-    {
      "rule": "secret-paths",
      "label": "Credential-store paths",
+     "count": 12
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
      "count": 12
     },
     {
@@ -9824,7 +9826,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "SnailSploit/Claude-Red",
    "url": "https://github.com/SnailSploit/Claude-Red",
-   "stars": 11446,
+   "stars": 11516,
    "description": "claude-red is a curated library of offensive security skills designed for the Claude skills system. Each skill is a structured SKILL.md file that primes Claude with expert-level methodology for a specific attack surface — from SQLi to shellcode, EDR evasion to exploit development.",
    "license": "MIT",
    "commit": "6196ba7464662de34e8744d359f175d1a7bca530",
@@ -9897,38 +9899,6 @@ window.SKILLSCAN_DATA = {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
      "sev": "MED",
-     "file": "Skills/api/offensive-api-security/SKILL.md",
-     "line": 130,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "Skills/api/offensive-api-security/SKILL.md",
-     "line": 437,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "Skills/api/offensive-api-security/SKILL.md",
-     "line": 442,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "Skills/api/offensive-api-security/SKILL.md",
-     "line": 446,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
      "file": "Skills/container/offensive-k8s-attacks/SKILL.md",
      "line": 776,
      "auto_run": false
@@ -9939,6 +9909,14 @@ window.SKILLSCAN_DATA = {
      "sev": "MED",
      "file": "Skills/exploit-dev/offensive-crash-analysis/SKILL.md",
      "line": 10896,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "Skills/forensics/offensive-anti-forensics/SKILL.md",
+     "line": 373,
      "auto_run": false
     },
     {
@@ -10028,6 +10006,30 @@ window.SKILLSCAN_DATA = {
      "file": "Skills/post-exploitation/offensive-data-exfiltration/SKILL.md",
      "line": 477,
      "auto_run": false
+    },
+    {
+     "rule": "persistence",
+     "label": "Shell rc / cron / LaunchAgent write",
+     "sev": "MED",
+     "file": "Skills/post-exploitation/offensive-persistence/SKILL.md",
+     "line": 317,
+     "auto_run": false
+    },
+    {
+     "rule": "persistence",
+     "label": "Shell rc / cron / LaunchAgent write",
+     "sev": "MED",
+     "file": "Skills/post-exploitation/offensive-persistence/SKILL.md",
+     "line": 324,
+     "auto_run": false
+    },
+    {
+     "rule": "persistence",
+     "label": "Shell rc / cron / LaunchAgent write",
+     "sev": "MED",
+     "file": "Skills/post-exploitation/offensive-persistence/SKILL.md",
+     "line": 328,
+     "auto_run": false
     }
    ],
    "worst_units": [
@@ -10086,7 +10088,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Security",
    "score": 83,
-   "verdict": "REVIEW",
+   "verdict": "OK",
    "units": 100,
    "skills": 84,
    "commands": 15,
@@ -10095,7 +10097,7 @@ window.SKILLSCAN_DATA = {
    "mcp": 1,
    "unit_verdicts": {
     "OK": 93,
-    "BLOCK": 2,
+    "CAUTION": 2,
     "REVIEW": 5
    },
    "clean_units": 38,
@@ -10110,14 +10112,14 @@ window.SKILLSCAN_DATA = {
    ],
    "sev": {
     "LOW": 451,
-    "HIGH": 14,
-    "MED": 52
+    "HIGH": 15,
+    "MED": 46
    },
    "rules": [
     {
      "rule": "net-exfil-post",
      "label": "Sends data to remote host",
-     "count": 35
+     "count": 30
     },
     {
      "rule": "persistence",
@@ -10168,10 +10170,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "elementalsouls/Claude-BugHunter",
    "url": "https://github.com/elementalsouls/Claude-BugHunter",
-   "stars": 19787,
+   "stars": 21461,
    "description": "A Claude Code skill bundle for bug hunting and external red-team work - 84 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.",
    "license": "MIT",
-   "commit": "b33313ba0e507dcbf2ed117b86155c6afb25e99e",
+   "commit": "9796beeeded3b9e6df50b9f5f89e79dc43bc6915",
    "top_findings": [
     {
      "rule": "inj-override",
@@ -10203,6 +10205,14 @@ window.SKILLSCAN_DATA = {
      "sev": "HIGH",
      "file": "skills/hunt-business-logic/SKILL.md",
      "line": 39,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "HIGH",
+     "file": "skills/hunt-rce/SKILL.md",
+     "line": 173,
      "auto_run": false
     },
     {
@@ -10364,14 +10374,6 @@ window.SKILLSCAN_DATA = {
      "file": "commands/autopilot.md",
      "line": 67,
      "auto_run": false
-    },
-    {
-     "rule": "inj-skip-perms",
-     "label": "Permission bypass",
-     "sev": "MED",
-     "file": "commands/autopilot.md",
-     "line": 77,
-     "auto_run": false
     }
    ],
    "worst_units": [
@@ -10379,13 +10381,13 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "bb-local-toolkit",
      "score": 38,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
      "name": "bug-bounty",
      "score": 38,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
@@ -10395,8 +10397,14 @@ window.SKILLSCAN_DATA = {
     },
     {
      "kind": "skill",
+     "name": "offensive-osint",
+     "score": 58,
+     "verdict": "REVIEW"
+    },
+    {
+     "kind": "skill",
      "name": "hunt-rce",
-     "score": 61,
+     "score": 59,
      "verdict": "REVIEW"
     },
     {
@@ -10407,20 +10415,14 @@ window.SKILLSCAN_DATA = {
     },
     {
      "kind": "skill",
-     "name": "offensive-osint",
-     "score": 68,
-     "verdict": "REVIEW"
-    },
-    {
-     "kind": "skill",
      "name": "hunt-business-logic",
      "score": 69,
      "verdict": "REVIEW"
     },
     {
      "kind": "skill",
-     "name": "hunt-cors",
-     "score": 84,
+     "name": "hunt-grpc",
+     "score": 86,
      "verdict": "OK"
     }
    ],
@@ -10460,7 +10462,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "img2threejs/img2threejs",
    "url": "https://github.com/img2threejs/img2threejs",
-   "stars": 21823,
+   "stars": 21878,
    "description": "Rebuild the object in a reference image as a code-only, procedural, quality-gated, animation-ready Three.js model. Token-efficient image-to-3D.",
    "license": "Apache-2.0",
    "commit": "0c0c49bc168e648dbaf9c8c080474de0b3a941b6",
@@ -10540,7 +10542,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "ConardLi/garden-skills",
    "url": "https://github.com/ConardLi/garden-skills",
-   "stars": 15703,
+   "stars": 15750,
    "description": "ConardLi's open-source Skills collection, featuring web design, knowledge retrieval, image generation, and more.",
    "license": "MIT",
    "commit": "f2d7adeaf53dcce3d0eb19cbffe8c04f4c636c2a",
@@ -10616,7 +10618,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Apps & harnesses",
    "score": 81,
-   "verdict": "REVIEW",
+   "verdict": "OK",
    "units": 64,
    "skills": 64,
    "commands": 0,
@@ -10626,7 +10628,7 @@ window.SKILLSCAN_DATA = {
    "unit_verdicts": {
     "OK": 58,
     "REVIEW": 5,
-    "BLOCK": 1
+    "CAUTION": 1
    },
    "clean_units": 31,
    "caps": [
@@ -10686,10 +10688,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "nanocoai/nanoclaw",
    "url": "https://github.com/nanocoai/nanoclaw",
-   "stars": 31150,
+   "stars": 31154,
    "description": "Your own always-on AI assistant: self-hosted, open source, lightweight. Each agent runs in its own container on your machine, on the harness you choose (Claude Code, Codex, Cursor, OpenCode). Talk to it from Slack, WhatsApp, Telegram, Discord and more.",
    "license": "MIT",
-   "commit": "53099d281f894521049e3930ee9e56d0dad7c1cf",
+   "commit": "9774cb596a32039d9464d78174ec5ed9531a9898",
    "top_findings": [
     {
      "rule": "net-exfil-post",
@@ -10897,7 +10899,7 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "slack-agent-flow",
      "score": 36,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     },
     {
      "kind": "skill",
@@ -10975,7 +10977,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "latent-spaces/brag",
    "url": "https://github.com/latent-spaces/brag",
-   "stars": 22363,
+   "stars": 22485,
    "description": "You built it. Now brag. Turn the project you just created into a short, shareable launch video with one command.",
    "license": "MIT",
    "commit": "06379432a9243c951dfcc051153be18d2d261044",
@@ -11060,7 +11062,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "OthmanAdi/planning-with-files",
    "url": "https://github.com/OthmanAdi/planning-with-files",
-   "stars": 28209,
+   "stars": 28222,
    "description": "Persistent file-based planning for AI coding agents and long-running tasks. Crash-proof markdown plans, session recovery after /clear and compaction, per-turn re-injection against context rot, deterministic completion gate. Manus-style. Install from npm, the Claude Code plugin marketplace, or npx skills. Codex, Cursor, OpenCode, 60+ agents.",
    "license": "MIT",
    "commit": "aaa38bc62053f5f7c1bfbcb60f0405f7cf0ee228",
@@ -11351,10 +11353,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "JuneYaooo/rea-video",
    "url": "https://github.com/JuneYaooo/rea-video",
-   "stars": 12674,
+   "stars": 13000,
    "description": "Reverse-engineer any video, shot by shot: filmed, AI-generated or coded, and how to remake it. Breakdowns in the open VIDEO.md format. 逆向一切视频，逐个镜头看是拍的、AI 生成的还是代码做的，再告诉你怎么复刻；拆解结果按 VIDEO.md 格式输出。",
    "license": "Apache-2.0",
-   "commit": "c7162340f94b0b6fc61d0bfeb3c6f0fbe8a4f166",
+   "commit": "fc69e194bdb4da91f72420c58debbc38eee647f5",
    "top_findings": [
     {
      "rule": "pipe-to-shell",
@@ -11437,7 +11439,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "MemTensor/MemOS",
    "url": "https://github.com/MemTensor/MemOS",
-   "stars": 12489,
+   "stars": 12503,
    "description": "Self-evolving memory OS for LLM & AI Agents: ultra-persistent memory, hybrid-retrieval, and cross-task skill reuse, with 35.24% token savings and DeepSeek Harness support.",
    "license": "Apache-2.0",
    "commit": "3a16e5fe3048a209f722806f4123fa2e533588fd",
@@ -11679,10 +11681,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "wanshuiyin/Auto-claude-code-research-in-sleep",
    "url": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
-   "stars": 19655,
+   "stars": 19788,
    "description": "ARIS ⚔️ (Auto-Research-In-Sleep) — Lightweight Markdown-only skills for autonomous ML research: cross-model review loops, idea discovery, and experiment automation. No framework, no lock-in — works with Claude Code, Codex, OpenClaw, or any LLM agent.",
    "license": "MIT",
-   "commit": "4ba94ae2a1c1fbbb14858750dd8764cabf6c28bd",
+   "commit": "b11b2078ec7c7d8b44c27e1da227f73369fa3684",
    "top_findings": [
     {
      "rule": "tools-bash-any",
@@ -11994,9 +11996,9 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "JimLiu/baoyu-skills",
    "url": "https://github.com/JimLiu/baoyu-skills",
-   "stars": 27828,
-   "description": "",
-   "license": "MIT",
+   "stars": 27859,
+   "description": "agent-skills,claude-skills,codex-skills,openclaw-skills",
+   "license": "2026-11-20T05:47:41Z",
    "commit": "bf1ff076e25f8da4a339eb1c8cf03361fea5ea4c",
    "top_findings": [
     {
@@ -12285,10 +12287,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "zhayujie/CowAgent",
    "url": "https://github.com/zhayujie/CowAgent",
-   "stars": 48052,
+   "stars": 48063,
    "description": "Open-source personal AI assistant & Agent Harness. Plans tasks, runs tools and skills, self-evolves with memory and knowledge. Multi-agent, multi-model, multi-channel. Lightweight, extensible, one-line install.",
    "license": "MIT",
-   "commit": "1d98c418cb10fee59c5cfd932bc7be2ef36f4b24",
+   "commit": "58148b8250f6e08db8ee4130552612ccb49a5146",
    "top_findings": [
     {
      "rule": "net-exfil-post",
@@ -12360,6 +12362,118 @@ window.SKILLSCAN_DATA = {
   },
   {
    "category": "Memory & context",
+   "score": 71,
+   "verdict": "REVIEW",
+   "units": 1,
+   "skills": 1,
+   "commands": 0,
+   "agents": 0,
+   "hooks": 0,
+   "mcp": 0,
+   "unit_verdicts": {
+    "REVIEW": 1
+   },
+   "clean_units": 0,
+   "caps": [
+    "injection-surface",
+    "network",
+    "shell"
+   ],
+   "sev": {
+    "MED": 3,
+    "LOW": 51,
+    "HIGH": 4
+   },
+   "rules": [
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "count": 5
+    },
+    {
+     "rule": "inj-skip-perms",
+     "label": "Permission bypass",
+     "count": 2
+    }
+   ],
+   "stars_bucket": "10k–25k",
+   "repo": "NevaMind-AI/memU",
+   "url": "https://github.com/NevaMind-AI/memU",
+   "stars": 14637,
+   "description": "Personal memory across agents",
+   "license": "NOASSERTION",
+   "commit": "dbd0a1b5352ed2e9f6caf32b29fd4850a9e965ae",
+   "top_findings": [
+    {
+     "rule": "inj-skip-perms",
+     "label": "Permission bypass",
+     "sev": "HIGH",
+     "file": "src/memu/hosts/claude_code/cli.py",
+     "line": 99,
+     "auto_run": false
+    },
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "sev": "HIGH",
+     "file": "src/memu/hosts/codex/cli.py",
+     "line": 101,
+     "auto_run": false
+    },
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "sev": "HIGH",
+     "file": "src/memu/hosts/cursor/INSTALL.md",
+     "line": 240,
+     "auto_run": false
+    },
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "sev": "HIGH",
+     "file": "src/memu/hosts/cursor/cli.py",
+     "line": 59,
+     "auto_run": false
+    },
+    {
+     "rule": "inj-skip-perms",
+     "label": "Permission bypass",
+     "sev": "MED",
+     "file": "src/memu/hosts/cursor/BRIDGING_TASK.md",
+     "line": 206,
+     "auto_run": false
+    },
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "sev": "MED",
+     "file": "CONTRIBUTING.md",
+     "line": 44,
+     "auto_run": false
+    },
+    {
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "sev": "MED",
+     "file": "npm/README.md",
+     "line": 10,
+     "auto_run": false
+    }
+   ],
+   "worst_units": [
+    {
+     "kind": "skill",
+     "name": "install-memu",
+     "score": 71,
+     "verdict": "REVIEW"
+    }
+   ],
+   "id": "MEM-07",
+   "label": "NevaMind-AI/memU"
+  },
+  {
+   "category": "Memory & context",
    "score": 70,
    "verdict": "REVIEW",
    "units": 4,
@@ -12397,7 +12511,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "MemoriLabs/Memori",
    "url": "https://github.com/MemoriLabs/Memori",
-   "stars": 17599,
+   "stars": 17600,
    "description": "Memori is agent-native memory infrastructure. A LLM-agnostic layer that turns agent execution and conversation into structured, persistent state for production systems. Built for enterprise, Memori works with the data infrastructure you already run, no rip-and-replace, and deploys across managed cloud, single-tenant cloud, VPC, and on-premises.",
    "license": "NOASSERTION",
    "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59",
@@ -12433,7 +12547,7 @@ window.SKILLSCAN_DATA = {
      "verdict": "OK"
     }
    ],
-   "id": "MEM-07",
+   "id": "MEM-08",
    "label": "MemoriLabs/Memori"
   },
   {
@@ -12469,10 +12583,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "Agents365-ai/drawio-skill",
    "url": "https://github.com/Agents365-ai/drawio-skill",
-   "stars": 10913,
+   "stars": 10927,
    "description": "Agent skill that turns natural language, code, Terraform/K8s, SQL, OpenAPI, AsyncAPI, Protobuf and GraphQL sources into editable, tested draw.io architecture diagrams: incremental sync, multi-view projection, drift diff, CI architecture tests, whiteboard derasterize, interactive HTML/PPTX/Mermaid exports.",
    "license": "MIT",
-   "commit": "77287b6452503d14faa255309f3c6ad5fb7e1df0",
+   "commit": "9dd28000c6a37ad121f324508749c6ad59e540bc",
    "top_findings": [
     {
      "rule": "tools-bash-any",
@@ -12495,129 +12609,287 @@ window.SKILLSCAN_DATA = {
    "label": "Agents365-ai/drawio-skill"
   },
   {
-   "category": "Memory & context",
-   "score": 63,
+   "category": "Browser & devices",
+   "score": 53,
    "verdict": "REVIEW",
-   "units": 1,
-   "skills": 1,
+   "units": 3,
+   "skills": 3,
    "commands": 0,
    "agents": 0,
    "hooks": 0,
    "mcp": 0,
    "unit_verdicts": {
-    "REVIEW": 1
+    "OK": 1,
+    "REVIEW": 2
    },
-   "clean_units": 0,
+   "clean_units": 1,
    "caps": [
     "injection-surface",
     "network",
     "shell"
    ],
    "sev": {
-    "MED": 4,
-    "LOW": 50,
-    "HIGH": 4
+    "LOW": 365,
+    "MED": 48,
+    "HIGH": 3
    },
    "rules": [
     {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "count": 5
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "count": 40
     },
     {
-     "rule": "inj-skip-perms",
-     "label": "Permission bypass",
-     "count": 2
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
+     "count": 4
+    },
+    {
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
+     "count": 4
     },
     {
      "rule": "dyn-exec",
      "label": "eval / exec / shell=True",
      "count": 1
+    },
+    {
+     "rule": "sudo",
+     "label": "Uses sudo",
+     "count": 1
+    },
+    {
+     "rule": "webhook",
+     "label": "Webhook / paste endpoint",
+     "count": 1
     }
    ],
    "stars_bucket": "10k–25k",
-   "repo": "NevaMind-AI/memU",
-   "url": "https://github.com/NevaMind-AI/memU",
-   "stars": 14635,
-   "description": "Personal memory across agents",
-   "license": "NOASSERTION",
-   "commit": "12ade13143f0148e874ce8e67291a1c12ef2ca1a",
+   "repo": "browser-use/browser-harness",
+   "url": "https://github.com/browser-use/browser-harness",
+   "stars": 19229,
+   "description": "Let Claude Code, Codex or Cursor use your real Chrome, logged in as you. One prompt to set up. Open source, MIT.",
+   "license": "MIT",
+   "commit": "78dca5346138ab2bebd372308eeaeba6788f14cc",
    "top_findings": [
     {
-     "rule": "inj-skip-perms",
-     "label": "Permission bypass",
+     "rule": "pipe-to-shell",
+     "label": "curl | sh installer",
      "sev": "HIGH",
-     "file": "src/memu/hosts/claude_code/cli.py",
-     "line": 99,
+     "file": "agent-workspace/domain-skills/browser-use-cloud/cloud.md",
+     "line": 181,
      "auto_run": false
     },
     {
      "rule": "pipe-to-shell",
      "label": "curl | sh installer",
      "sev": "HIGH",
-     "file": "src/memu/hosts/codex/cli.py",
-     "line": 101,
+     "file": "src/browser_harness/admin.py",
+     "line": 1208,
      "auto_run": false
     },
     {
      "rule": "pipe-to-shell",
      "label": "curl | sh installer",
      "sev": "HIGH",
-     "file": "src/memu/hosts/cursor/INSTALL.md",
-     "line": 240,
-     "auto_run": false
-    },
-    {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "sev": "HIGH",
-     "file": "src/memu/hosts/cursor/cli.py",
-     "line": 59,
+     "file": "src/browser_harness/admin.py",
+     "line": 1233,
      "auto_run": false
     },
     {
      "rule": "dyn-exec",
      "label": "eval / exec / shell=True",
      "sev": "MED",
-     "file": "scripts/benchmark/benchmark_resource_planning.py",
-     "line": 61,
+     "file": "src/browser_harness/run.py",
+     "line": 479,
      "auto_run": false
     },
     {
-     "rule": "inj-skip-perms",
-     "label": "Permission bypass",
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
      "sev": "MED",
-     "file": "src/memu/hosts/cursor/BRIDGING_TASK.md",
-     "line": 206,
+     "file": "CHANGELOG.md",
+     "line": 7,
      "auto_run": false
     },
     {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
      "sev": "MED",
-     "file": "CONTRIBUTING.md",
-     "line": 44,
+     "file": "agent-workspace/domain-skills/cpsc-recalls/scraping.md",
+     "line": 369,
      "auto_run": false
     },
     {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
      "sev": "MED",
-     "file": "npm/README.md",
-     "line": 10,
+     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
+     "line": 364,
+     "auto_run": false
+    },
+    {
+     "rule": "inj-no-confirm",
+     "label": "\"Without asking\" phrasing",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/statistics-sweden/scraping.md",
+     "line": 315,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/atlas/overview.md",
+     "line": 55,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/census-geocoder/scraping.md",
+     "line": 514,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/cisa-kev/scraping.md",
+     "line": 503,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/cleveland-museum/scraping.md",
+     "line": 650,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/cleveland-museum/scraping.md",
+     "line": 653,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/cpsc-recalls/scraping.md",
+     "line": 586,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/crates-io/scraping.md",
+     "line": 587,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/crates-io/scraping.md",
+     "line": 592,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
+     "line": 531,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
+     "line": 535,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/eurostat/scraping.md",
+     "line": 400,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/faa-nas-status/scraping.md",
+     "line": 446,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/grants-gov/scraping.md",
+     "line": 47,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/grants-gov/scraping.md",
+     "line": 616,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/grants-gov/scraping.md",
+     "line": 626,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/grants-gov/scraping.md",
+     "line": 634,
+     "auto_run": false
+    },
+    {
+     "rule": "net-exfil-post",
+     "label": "Sends data to remote host",
+     "sev": "MED",
+     "file": "agent-workspace/domain-skills/grants-gov/scraping.md",
+     "line": 635,
      "auto_run": false
     }
    ],
    "worst_units": [
     {
      "kind": "skill",
-     "name": "install-memu",
-     "score": 63,
+     "name": "browser-harness",
+     "score": 44,
+     "verdict": "REVIEW"
+    },
+    {
+     "kind": "skill",
+     "name": "browser-harness",
+     "score": 53,
      "verdict": "REVIEW"
     }
    ],
-   "id": "MEM-08",
-   "label": "NevaMind-AI/memU"
+   "id": "BRO-04",
+   "label": "browser-use/browser-harness"
   },
   {
    "category": "Design & UI",
@@ -12658,10 +12930,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "100k–200k",
    "repo": "Leonxlnx/taste-skill",
    "url": "https://github.com/Leonxlnx/taste-skill",
-   "stars": 120667,
+   "stars": 121121,
    "description": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
    "license": "MIT",
-   "commit": "6c0b5c78f5d31776e2210305abaa210cdc0030bf",
+   "commit": "d1a2bb41d927083ac7118f60cfc9cdf711810ea0",
    "top_findings": [
     {
      "rule": "net-exfil-post",
@@ -12876,290 +13148,6 @@ window.SKILLSCAN_DATA = {
    "label": "Leonxlnx/taste-skill"
   },
   {
-   "category": "Browser & devices",
-   "score": 49,
-   "verdict": "BLOCK",
-   "units": 3,
-   "skills": 3,
-   "commands": 0,
-   "agents": 0,
-   "hooks": 0,
-   "mcp": 0,
-   "unit_verdicts": {
-    "OK": 1,
-    "REVIEW": 1,
-    "BLOCK": 1
-   },
-   "clean_units": 1,
-   "caps": [
-    "injection-surface",
-    "network",
-    "shell"
-   ],
-   "sev": {
-    "LOW": 367,
-    "MED": 73,
-    "HIGH": 5
-   },
-   "rules": [
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "count": 67
-    },
-    {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "count": 4
-    },
-    {
-     "rule": "inj-no-confirm",
-     "label": "\"Without asking\" phrasing",
-     "count": 3
-    },
-    {
-     "rule": "hidden-unicode",
-     "label": "Hidden unicode",
-     "count": 2
-    },
-    {
-     "rule": "dyn-exec",
-     "label": "eval / exec / shell=True",
-     "count": 1
-    },
-    {
-     "rule": "sudo",
-     "label": "Uses sudo",
-     "count": 1
-    }
-   ],
-   "stars_bucket": "10k–25k",
-   "repo": "browser-use/browser-harness",
-   "url": "https://github.com/browser-use/browser-harness",
-   "stars": 19215,
-   "description": "Let Claude Code, Codex or Cursor use your real Chrome, logged in as you. One prompt to set up. Open source, MIT.",
-   "license": "MIT",
-   "commit": "f557c6179203a3cc4b393ed3e12f7b08e2a501bf",
-   "top_findings": [
-    {
-     "rule": "hidden-unicode",
-     "label": "Hidden unicode",
-     "sev": "HIGH",
-     "file": "agent-workspace/domain-skills/feishu/docx-scraping.md",
-     "line": 110,
-     "auto_run": false
-    },
-    {
-     "rule": "hidden-unicode",
-     "label": "Hidden unicode",
-     "sev": "HIGH",
-     "file": "agent-workspace/domain-skills/itch-io/scraping.md",
-     "line": 436,
-     "auto_run": false
-    },
-    {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "sev": "HIGH",
-     "file": "agent-workspace/domain-skills/browser-use-cloud/cloud.md",
-     "line": 181,
-     "auto_run": false
-    },
-    {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "sev": "HIGH",
-     "file": "src/browser_harness/admin.py",
-     "line": 1043,
-     "auto_run": false
-    },
-    {
-     "rule": "pipe-to-shell",
-     "label": "curl | sh installer",
-     "sev": "HIGH",
-     "file": "src/browser_harness/admin.py",
-     "line": 1068,
-     "auto_run": false
-    },
-    {
-     "rule": "dyn-exec",
-     "label": "eval / exec / shell=True",
-     "sev": "MED",
-     "file": "src/browser_harness/run.py",
-     "line": 409,
-     "auto_run": false
-    },
-    {
-     "rule": "inj-no-confirm",
-     "label": "\"Without asking\" phrasing",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/cpsc-recalls/scraping.md",
-     "line": 369,
-     "auto_run": false
-    },
-    {
-     "rule": "inj-no-confirm",
-     "label": "\"Without asking\" phrasing",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
-     "line": 364,
-     "auto_run": false
-    },
-    {
-     "rule": "inj-no-confirm",
-     "label": "\"Without asking\" phrasing",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/statistics-sweden/scraping.md",
-     "line": 315,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/atlas/overview.md",
-     "line": 55,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/bank-of-canada/scraping.md",
-     "line": 351,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/census-geocoder/scraping.md",
-     "line": 514,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/census-geocoder/scraping.md",
-     "line": 517,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/cisa-kev/scraping.md",
-     "line": 503,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/cleveland-museum/scraping.md",
-     "line": 650,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/cleveland-museum/scraping.md",
-     "line": 653,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/cpsc-recalls/scraping.md",
-     "line": 586,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/crates-io/scraping.md",
-     "line": 587,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/crates-io/scraping.md",
-     "line": 592,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
-     "line": 531,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/endoflife-date/scraping.md",
-     "line": 535,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/energi-data-service/scraping.md",
-     "line": 479,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/eurostat/scraping.md",
-     "line": 400,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/faa-nas-status/scraping.md",
-     "line": 446,
-     "auto_run": false
-    },
-    {
-     "rule": "net-exfil-post",
-     "label": "Sends data to remote host",
-     "sev": "MED",
-     "file": "agent-workspace/domain-skills/fdic-bankfind/scraping.md",
-     "line": 564,
-     "auto_run": false
-    }
-   ],
-   "worst_units": [
-    {
-     "kind": "skill",
-     "name": "browser-harness",
-     "score": 39,
-     "verdict": "BLOCK"
-    },
-    {
-     "kind": "skill",
-     "name": "browser-harness",
-     "score": 52,
-     "verdict": "REVIEW"
-    }
-   ],
-   "id": "BRO-04",
-   "label": "browser-use/browser-harness"
-  },
-  {
    "category": "Research & writing",
    "score": 40,
    "verdict": "REVIEW",
@@ -13219,10 +13207,10 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "10k–25k",
    "repo": "teng-lin/notebooklm-py",
    "url": "https://github.com/teng-lin/notebooklm-py",
-   "stars": 20358,
+   "stars": 20365,
    "description": "Unofficial Python API and agentic skill for Google Gemini Notebook. Full programmatic access to Gemini Notebook's features—including capabilities the web UI doesn't expose—via Python, CLI, and AI agents like Claude Code, Codex, and OpenClaw.",
    "license": "MIT",
-   "commit": "9f9c3e7348f5cd56d320572606b1b3a3b4272fa8",
+   "commit": "77d6ab4187cd7bd6d9af80ef6d74d524f77e7b68",
    "top_findings": [
     {
      "rule": "persistence",
@@ -13386,7 +13374,7 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "25k–50k",
    "repo": "titanwings/distilly",
    "url": "https://github.com/titanwings/distilly",
-   "stars": 26810,
+   "stars": 26838,
    "description": "Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.",
    "license": "MIT",
    "commit": "0afc45c29c360ba7bc8260f1bb0bf34e9155f4fa",
@@ -13462,7 +13450,7 @@ window.SKILLSCAN_DATA = {
   {
    "category": "Research & writing",
    "score": 20,
-   "verdict": "BLOCK",
+   "verdict": "CAUTION",
    "units": 2,
    "skills": 1,
    "commands": 0,
@@ -13470,7 +13458,7 @@ window.SKILLSCAN_DATA = {
    "hooks": 1,
    "mcp": 0,
    "unit_verdicts": {
-    "BLOCK": 1,
+    "CAUTION": 1,
     "OK": 1
    },
    "clean_units": 1,
@@ -13483,15 +13471,15 @@ window.SKILLSCAN_DATA = {
     "shell"
    ],
    "sev": {
-    "MED": 3,
-    "HIGH": 21,
-    "LOW": 72
+    "MED": 4,
+    "HIGH": 19,
+    "LOW": 97
    },
    "rules": [
     {
      "rule": "secret-paths",
      "label": "Credential-store paths",
-     "count": 18
+     "count": 16
     },
     {
      "rule": "sudo",
@@ -13502,6 +13490,11 @@ window.SKILLSCAN_DATA = {
      "rule": "inj-skip-perms",
      "label": "Permission bypass",
      "count": 2
+    },
+    {
+     "rule": "dyn-exec",
+     "label": "eval / exec / shell=True",
+     "count": 1
     },
     {
      "rule": "webhook",
@@ -13517,17 +13510,17 @@ window.SKILLSCAN_DATA = {
    "stars_bucket": "50k–100k",
    "repo": "mvanhorn/last30days-skill",
    "url": "https://github.com/mvanhorn/last30days-skill",
-   "stars": 73446,
+   "stars": 74206,
    "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
    "license": "MIT",
-   "commit": "475c8b1bfeeb78485caf68ba3c2602d3cb4fcb5f",
+   "commit": "7c2e1c2b099b13abd4397910168c4f53e638bb21",
    "top_findings": [
     {
      "rule": "inj-skip-perms",
      "label": "Permission bypass",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/grok_audit.py",
-     "line": 499,
+     "line": 520,
      "auto_run": false
     },
     {
@@ -13535,7 +13528,7 @@ window.SKILLSCAN_DATA = {
      "label": "Permission bypass",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/grok_x.py",
-     "line": 861,
+     "line": 924,
      "auto_run": false
     },
     {
@@ -13559,7 +13552,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/chrome_cookies.py",
-     "line": 68,
+     "line": 277,
      "auto_run": false
     },
     {
@@ -13567,7 +13560,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/grok_x.py",
-     "line": 330,
+     "line": 332,
      "auto_run": false
     },
     {
@@ -13575,7 +13568,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/grok_x.py",
-     "line": 331,
+     "line": 333,
      "auto_run": false
     },
     {
@@ -13583,7 +13576,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/reddit_envelope.py",
-     "line": 89,
+     "line": 94,
      "auto_run": false
     },
     {
@@ -13591,7 +13584,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/reddit_envelope.py",
-     "line": 90,
+     "line": 95,
      "auto_run": false
     },
     {
@@ -13599,7 +13592,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/reddit_envelope.py",
-     "line": 91,
+     "line": 96,
      "auto_run": false
     },
     {
@@ -13639,7 +13632,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/x_envelope.py",
-     "line": 131,
+     "line": 142,
      "auto_run": false
     },
     {
@@ -13647,7 +13640,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/x_envelope.py",
-     "line": 132,
+     "line": 143,
      "auto_run": false
     },
     {
@@ -13655,7 +13648,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/x_envelope.py",
-     "line": 133,
+     "line": 144,
      "auto_run": false
     },
     {
@@ -13663,23 +13656,7 @@ window.SKILLSCAN_DATA = {
      "label": "Credential-store paths",
      "sev": "HIGH",
      "file": "skills/last30days/scripts/lib/youtube_yt.py",
-     "line": 593,
-     "auto_run": false
-    },
-    {
-     "rule": "secret-paths",
-     "label": "Credential-store paths",
-     "sev": "HIGH",
-     "file": "skills/last30days/scripts/setup-keychain.sh",
-     "line": 78,
-     "auto_run": false
-    },
-    {
-     "rule": "secret-paths",
-     "label": "Credential-store paths",
-     "sev": "HIGH",
-     "file": "skills/last30days/scripts/setup-keychain.sh",
-     "line": 105,
+     "line": 609,
      "auto_run": false
     },
     {
@@ -13688,6 +13665,14 @@ window.SKILLSCAN_DATA = {
      "sev": "HIGH",
      "file": "skills/last30days",
      "line": 1,
+     "auto_run": false
+    },
+    {
+     "rule": "dyn-exec",
+     "label": "eval / exec / shell=True",
+     "sev": "MED",
+     "file": "skills/last30days/scripts/box_chrome_login.py",
+     "line": 395,
      "auto_run": false
     },
     {
@@ -13711,7 +13696,7 @@ window.SKILLSCAN_DATA = {
      "label": "Webhook / paste endpoint",
      "sev": "MED",
      "file": "skills/last30days/scripts/watchlist.py",
-     "line": 46,
+     "line": 127,
      "auto_run": false
     }
    ],
@@ -13720,7 +13705,7 @@ window.SKILLSCAN_DATA = {
      "kind": "skill",
      "name": "last30days",
      "score": 0,
-     "verdict": "BLOCK"
+     "verdict": "CAUTION"
     }
    ],
    "id": "RES-15",

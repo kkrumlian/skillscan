@@ -27,12 +27,12 @@ done < "${TARGETS:-$ROOT/targets/repos.txt}"
 # 2. Clone, scan, delete, in parallel.
 scan_one() {
   repo="$1"; id="${repo/\//_}"; d="$WORK/clones/$id"; out="$WORK/scans/$id.json"
-  rm -rf -- "$d"
+  rm -rf -- "$d" 2>/dev/null || rm -rf -- "$d" 2>/dev/null || true
   if ! git clone --depth 1 --quiet --no-tags "https://github.com/$repo" "$d" 2>/dev/null; then echo "clone failed: $repo" >&2; return 0; fi
   git -C "$d" rev-parse HEAD > "$out.sha"
   if timeout 600 python3 -I "$ROOT/skillscan.py" scan "$d" --skills-only --json > "$out.tmp" 2>/dev/null; then mv "$out.tmp" "$out"; else echo "scan failed: $repo" >&2; rm -f "$out.tmp"; fi
-  rm -rf -- "$d"
+  rm -rf -- "$d" 2>/dev/null || rm -rf -- "$d" 2>/dev/null || true
 }
 export -f scan_one
-cut -f2 "$WORK/selected.tsv" | xargs -P "$JOBS" -I{} bash -c 'scan_one "$@"' _ {}
+cut -f2 "$WORK/selected.tsv" | xargs -P "$JOBS" -I{} bash -c 'scan_one "$@"' _ {} || true
 echo "scanned $(ls "$WORK"/scans/*.json 2>/dev/null | wc -l | tr -d ' ') repos into $WORK" >&2

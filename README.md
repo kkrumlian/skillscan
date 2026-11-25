@@ -36,7 +36,18 @@ CI (GitHub Actions):
 | Hooks | Everything in hooks is weighted 1.5x and tagged `[auto-run]`, because hooks run with no prompt. |
 | MCP | unpinned `npx`/`uvx` packages, privileged docker, remote URLs |
 
-**Scoring.** Each unit (skill, command, agent, hook set or MCP server) starts at 100 and loses points for each distinct finding: 20 for HIGH, 8 for MED and 2 for LOW, with less weight for repeats. A score of 75 or more is OK, 40 to 74 is REVIEW, and below 40 is BLOCK. Any HIGH finding in an auto-run hook is a BLOCK. The bundle score blends the worst 20% of units with the average.
+**Scoring.** Each unit (skill, command, agent, hook set or MCP server) starts at 100 and loses points for each distinct finding: 20 for HIGH, 8 for MED and 2 for LOW, with less weight for repeats. The bundle score blends the worst 20% of units with the average.
+
+**Verdicts.**
+- **OK** is 75 or more, and **REVIEW** is 40 to 74.
+- **CAUTION** means a score below 40, or a HIGH finding in an auto-run hook, with nothing that looks like exfiltration. This is a powerful bundle doing something deliberate, such as calling its own backend.
+- **BLOCK** is reserved for hard patterns:
+  - the same unit reads credentials or env and sends data to a host that isn't the bundle's documented service
+  - decode-and-execute, or hidden unicode
+  - secrets inlined in MCP config
+  - an auto-run hook that pipes curl to sh, persists, or sends data to an undeclared host
+
+**Documented services.** Network calls to hosts named in the bundle's README or manifest, or matching its repo or owner name, are LOW and labelled with the service.
 
 **Noise control.** `tests/`, `examples/`, `.github/` and `evals/` are skipped because they don't ship to agents (`--include-tests` scans them too). Code comments are ignored, and so is negated phrasing like "don't do X without asking". Findings inside markdown code fences drop one severity. Injection findings are the exception, because the model reads fenced text too.
 

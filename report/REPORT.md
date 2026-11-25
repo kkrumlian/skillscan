@@ -2,6 +2,8 @@
 
 *Static scan of 100 public GitHub repositories (4.6M combined stars, 9,535 skills, commands, subagents, hooks and MCP servers) with [skillscan](../README.md) 0.1, November 2026.*
 
+> **Update, 24 Nov 2026:** the scanner now has a fourth verdict, **CAUTION**, for powerful bundles doing something deliberate, such as calling their own documented backend. **BLOCK** is now reserved for exfiltration-like patterns. Re-scanned under the new rules, the 100 bundles split 88 OK, 8 REVIEW, 4 CAUTION and 0 BLOCK. The numbers below are from the original scan. The live site has the current verdicts.
+
 ## TL;DR
 
 - **We found no malware.** We saw no hidden-instruction smuggling, no real leaked credentials and no obfuscated payloads in auto-run hooks. Every high-severity pattern we checked by hand had a plausible stated purpose.

@@ -70,7 +70,7 @@ RULE_LABEL = {
     "inj-no-confirm": "\"Without asking\" phrasing", "inj-skip-perms": "Permission bypass",
     "inj-role": "Fake role markers", "hidden-unicode": "Hidden unicode", "base64-blob": "Base64 blob",
     "b64-decode-exec": "Decode-and-execute", "mcp-remote": "Remote MCP server", "mcp-unpinned": "Unpinned MCP package",
-    "mcp-pkg": "Pinned MCP package", "mcp-docker-priv": "Privileged docker MCP", "mcp-inline-secret": "Secret in MCP env",
+    "mcp-pkg": "Pinned MCP package", "exfil-combo": "Reads secrets + sends to undeclared host", "mcp-docker-priv": "Privileged docker MCP", "mcp-inline-secret": "Secret in MCP env",
 }
 
 

@@ -35,6 +35,7 @@
   const STATUS = {
     OK: { color: "var(--good)", label: "OK", icon: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor" opacity=".18"/><path d="M5 8.2l2 2 4-4.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' },
     REVIEW: { color: "var(--warn)", label: "Review", icon: '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8l6.5 11.4H1.5z" fill="currentColor" opacity=".18"/><path d="M8 6v3.4M8 11.3v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' },
+    CAUTION: { color: "var(--serious)", label: "Caution", icon: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor" opacity=".18"/><path d="M8 4.4v4.6M8 11.3v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' },
     BLOCK: { color: "var(--crit)", label: "Block", icon: '<svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="currentColor" opacity=".18"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>' },
   };
   const badge = (v) => `<span class="badge ${v}">${STATUS[v].icon}${STATUS[v].label}</span>`;
@@ -86,7 +87,7 @@
       (state.cap === "all" || b.caps.includes(state.cap)) &&
       (!q || [label(b), b.category, b.id, state.showNames ? b.description || "" : ""].join(" ").toLowerCase().includes(q)));
     const k = state.sort, dir = state.dir;
-    const val = (b) => (k === "name" ? label(b).toLowerCase() : k === "category" ? b.category : k === "caps" ? b.caps.length : k === "stars" ? (b.stars ?? starsRank(b.stars_bucket)) : b[k]);
+    const val = (b) => (k === "name" ? label(b).toLowerCase() : k === "category" ? b.category : k === "caps" ? b.caps.length : k === "stars" ? (b.stars ?? starsRank(b.stars_bucket)) : k === "verdict" ? ["BLOCK", "CAUTION", "REVIEW", "OK"].indexOf(b.verdict) : b[k]);
     rows.sort((a, b) => { const x = val(a), y = val(b); return (x < y ? -1 : x > y ? 1 : 0) * dir || b.units - a.units || a.id.localeCompare(b.id); });
     return rows;
   }
@@ -135,7 +136,7 @@
         <div class="meter" role="img" aria-label="${pct(S.clean_units, S.units)} percent clean"><div style="width:${pct(S.clean_units, S.units)}%"></div></div>
         <div class="sub">${fmt(S.clean_units)} of ${fmt(S.units)} skills, commands, agents, hooks and MCP servers</div></div>
       <div class="card"><h3>Verdicts</h3>
-        <div class="status-rows">${["OK", "REVIEW", "BLOCK"].map((k) => `
+        <div class="status-rows">${["OK", "REVIEW", "CAUTION", "BLOCK"].map((k) => `
           <div class="status-row">${badge(k)}<div class="track"><div class="fill" style="width:${pct(v[k] || 0, S.bundles)}%;background:${STATUS[k].color}"></div></div><span class="n">${v[k] || 0}</span></div>`).join("")}
         </div>
         <div class="sub">Bundles by overall verdict</div></div>
@@ -190,7 +191,7 @@
         <div class="tabs" id="cats">${cats.map((c) => `<button type="button" class="tab" aria-pressed="${state.cat === c}" data-cat="${esc(c)}">${esc(c)}${c === "All" ? "" : ` <span class="muted">${S.categories[c]}</span>`}</button>`).join("")}</div>
         <span class="spacer"></span>
         <select class="select" id="f-verdict" aria-label="Verdict">
-          <option value="all">All verdicts</option>${["OK", "REVIEW", "BLOCK"].map((v) => `<option value="${v}" ${state.verdict === v ? "selected" : ""}>${STATUS[v].label}</option>`).join("")}
+          <option value="all">All verdicts</option>${["OK", "REVIEW", "CAUTION", "BLOCK"].map((v) => `<option value="${v}" ${state.verdict === v ? "selected" : ""}>${STATUS[v].label}</option>`).join("")}
         </select>
         <select class="select" id="f-cap" aria-label="Capability">
           <option value="all">Any capability</option>${CAPS.map((c) => `<option value="${c}" ${state.cap === c ? "selected" : ""}>${CAP_LABEL[c]}</option>`).join("")}
@@ -201,7 +202,7 @@
       </div>
       <div class="table-card">
         <div class="table-scroll"><table class="rank" id="rank"><caption class="skip">Bundles ranked by trust score</caption><thead><tr></tr></thead><tbody></tbody></table></div>
-        <div class="table-foot"><span id="count"></span><span>Click a row for details · Scores: 75+ OK, 40–74 review, &lt;40 block</span></div>
+        <div class="table-foot"><span id="count"></span><span>Click a row for details · 75+ OK · 40–74 review · low score or auto-run risk = caution · exfiltration patterns = block</span></div>
       </div>`;
     renderTable();
     bindTips(view);
@@ -277,7 +278,7 @@
       <div class="grid-2">
         <div class="stack">
           <div class="card"><h3>Trust score</h3>
-            <div class="gauge-wrap">${gaugeSVG(b.score, b.verdict)}<div>${badge(b.verdict)}<p class="lbl">Blends the worst 20% of units with the average. Any high finding in an auto-run hook is a block.</p></div></div></div>
+            <div class="gauge-wrap">${gaugeSVG(b.score, b.verdict)}<div>${badge(b.verdict)}<p class="lbl">Blends the worst 20% of units with the average. Block is reserved for exfiltration-like patterns; powerful but explained behaviour is caution.</p></div></div></div>
           <div class="card"><h3>At a glance</h3>
             <dl class="kv">
               <dt>Units scanned</dt><dd>${fmt(b.units)}</dd>
@@ -287,7 +288,7 @@
               <dt>Low findings</dt><dd>${fmt(b.sev.LOW || 0)}</dd>
             </dl></div>
           <div class="card"><h3>Unit verdicts</h3>
-            <div class="status-rows">${["OK", "REVIEW", "BLOCK"].map((k) => `
+            <div class="status-rows">${["OK", "REVIEW", "CAUTION", "BLOCK"].map((k) => `
               <div class="status-row">${badge(k)}<div class="track"><div class="fill" style="width:${pct(uv[k] || 0, b.units)}%;background:${STATUS[k].color}"></div></div><span class="n">${uv[k] || 0}</span></div>`).join("")}</div></div>
         </div>
         <div class="stack">
@@ -342,7 +343,15 @@
       <h1 class="page-title">Methodology</h1>
       <p>skillscan reads a bundle's files and never runs them. It finds each <em>unit</em> (a skill's <code>SKILL.md</code> folder, a slash command, a subagent, a hook set or an MCP server config) and checks it for shell access, network calls, credential paths, persistence, permission bypasses, prompt-injection phrasing, hidden unicode and encoded payloads.</p>
       <h2>Scoring</h2>
-      <p>Each unit starts at 100 and loses points for each distinct finding (high 20, medium 8, low 2, with less weight for repeats). Findings in hooks weigh 1.5× because hooks run with no prompt. A score of 75+ is OK, 40–74 is review, and under 40 is block. Any high finding in an auto-run hook blocks the unit. A bundle's score blends its worst 20% of units with the average.</p>
+      <p>Each unit starts at 100 and loses points for each distinct finding (high 20, medium 8, low 2, with less weight for repeats). Findings in hooks weigh 1.5× because hooks run with no prompt. A bundle's score blends its worst 20% of units with the average.</p>
+      <h2>Verdicts</h2>
+      <ul>
+        <li><b>OK</b>: score 75 or more.</li>
+        <li><b>Review</b>: score 40–74. Worth a skim before installing.</li>
+        <li><b>Caution</b>: score under 40, or a high finding in an auto-run hook, but nothing that looks like exfiltration. Typical cause: a powerful skill that calls its own backend, reads cookies with consent, or pre-approves a shell.</li>
+        <li><b>Block</b>: reserved for hard patterns. These are a unit that reads credentials or environment variables <em>and</em> sends data to a host that isn't the bundle's documented service, decode-and-execute, hidden unicode, secrets inlined in MCP config, or an auto-run hook that pipes <code>curl</code> to a shell, persists, or sends data to an undeclared host.</li>
+      </ul>
+      <p>Network calls to a bundle's <b>own or documented service</b> are low severity. That covers a domain named in its README or manifest, or one that matches the repo or owner name. The finding says which service it is.</p>
       <h2>Noise control</h2>
       <ul>
         <li>Tests, examples, CI and eval folders are skipped because they don't ship to agents.</li>

@@ -72,7 +72,7 @@ RULES: list[Rule] = [
       r"(>>?\s*['\"]?(~|\$HOME|\$\{HOME\})/\.(bashrc|zshrc|profile|bash_profile|zprofile)\b|LaunchAgents/[\w.-]+\.plist|crontab\s+-[er]?\s*$|crontab\s+[\w./-]+\.(txt|cron)\b|/etc/cron\.)", flags=re.I | re.M),
     # network
     R("net-exfil-post", "HIGH", "network", "POSTs data to a remote host",
-      r"(curl\s[^\n]*(-d|--data|-F|--form|-T|--upload-file)\s|requests\.post\(|fetch\([^)]*method:\s*['\"]POST|axios\.post\()"),
+      r"(curl\s(?![^\n]*\s(?-i:-G)\s)(?:[^\n]*\s)?(?-i:-d|--data(-binary|-raw)?|-F|--form|-T|--upload-file)\s|requests\.post\(|fetch\([^)]*method:\s*['\"]POST|axios\.post\()"),
     R("net-fetch", "LOW", "network", "network fetch (curl/wget/requests/fetch)",
       r"\b(curl|wget)\s+(-[a-zA-Z-]+\s+)*['\"]?https?://|requests\.get\(|urllib\.request|\bfetch\(\s*['\"`]https?://"),
     R("webhook", "MED", "network", "sends to a chat/webhook/paste endpoint",
@@ -106,7 +106,7 @@ RULES: list[Rule] = [
 HIDDEN_UNICODE = re.compile("[\u202a-\u202e\u2066-\u2069\U000e0000-\U000e007f]")
 # Zero-width chars are normal in emoji (ZWJ) and Persian/Indic text (ZWNJ); flag only when they sit
 # inside ASCII text or come in runs, which is how hidden instructions are usually smuggled.
-ZERO_WIDTH = re.compile("(?<=[\x21-\x7e])[\u200b\u200e\u200f\u2060-\u2064\ufeff]+(?=[\x21-\x7e])|[\u200b-\u200f\u2060-\u2064\ufeff]{3,}")
+ZERO_WIDTH = re.compile("(?<=[A-Za-z0-9])[\u200b\u200e\u200f\u2060-\u2064\ufeff]+(?=[A-Za-z0-9])|[\u200b-\u200f\u2060-\u2064\ufeff]{3,}")
 DEFENSIVE = re.compile(r"\b(never|don't|do not|must not|refuse|reject|avoid|block(ed|s)?|banned|forbid\w*|untrusted|"
                        r"not as instructions|treat \w+ as data|e\.g\.|for example|such as|detect\w*|attack\w*|payloads?|"
                        r"malicious|injection|exploit\w*|vulnerab\w*|red.?team|pentest\w*|audit\w*|warn\w*|danger\w*)\b", re.I)
@@ -126,6 +126,8 @@ class Finding:
     line: int
     snippet: str
     auto_run: bool = False
+    host: str = ""        # destination host for network findings, when a literal URL is present
+    declared: bool = False  # host is the bundle's own or documented service
 
 
 @dataclass
@@ -299,6 +301,45 @@ def fenced_lines(text: str) -> set[int]:
     return out
 
 
+NET_RULES = {"net-exfil-post", "net-fetch", "webhook", "raw-ip", "mcp-remote"}
+SEND_RULES = {"net-exfil-post", "webhook", "raw-ip"}
+SECRET_RULES = {"secret-paths", "env-dump"}
+URL_HOST = re.compile(r"https?://([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
+GENERIC_HOSTS = {"github.com", "raw.githubusercontent.com", "gist.github.com", "localhost", "example.com", "shields.io",
+                 "img.shields.io", "npmjs.com", "www.npmjs.com", "pypi.org", "twitter.com", "x.com", "discord.gg"}
+DECLARED: set[str] = set()      # hosts named in the bundle's README / manifests
+OWNER_TOKENS: set[str] = set()  # repo owner / name tokens, e.g. "evermind" matches api.evermind.ai
+PASTE_HOSTS = re.compile(r"(webhook\.site|pastebin\.com|requestbin|ngrok\.io|hooks\.slack\.com|discord(app)?\.com/api/webhooks|api\.telegram\.org)")
+
+
+def _base(host: str) -> str:
+    parts = host.lower().strip(".").split(".")
+    return ".".join(parts[-2:]) if len(parts) >= 2 else host.lower()
+
+
+def collect_declared(root: Path, name_hint: str) -> None:
+    """Hosts a bundle declares up front: URLs in its top-level README and manifests, plus its own name."""
+    DECLARED.clear()
+    OWNER_TOKENS.clear()
+    docs = [p for p in root.glob("*") if p.is_file() and re.match(r"(?i)readme(\.\w+)?$", p.name)]
+    docs += [p for p in [root / "package.json", root / "plugin.json", root / "pyproject.toml"] if p.is_file()]
+    docs += [p for p in (root / ".claude-plugin").glob("*.json")] if (root / ".claude-plugin").is_dir() else []
+    for p in docs:
+        for h in URL_HOST.findall(read_text(p) or ""):
+            if h.lower() not in GENERIC_HOSTS and not PASTE_HOSTS.search(h):
+                DECLARED.add(_base(h))
+    for tok in re.split(r"[^a-z0-9]+", name_hint.lower()):
+        if len(tok) >= 4 and tok not in {"skill", "skills", "agent", "agents", "claude", "code", "plugin", "plugins", "awesome", "main"}:
+            OWNER_TOKENS.add(tok)
+
+
+def is_declared(host: str) -> bool:
+    if not host or PASTE_HOSTS.search(host):
+        return False
+    b = _base(host)
+    return b in DECLARED or any(t in b.split(".")[0] for t in OWNER_TOKENS)
+
+
 def scan_file(path: Path, root: Path, auto_run: bool) -> list[Finding]:
     text = read_text(path)
     if text is None:
@@ -321,6 +362,14 @@ def scan_file(path: Path, root: Path, auto_run: bool) -> list[Finding]:
             if is_script and COMMENT.match(raw):
                 continue
             sev, desc = rule.sev, rule.desc
+            host = ""
+            if rule.id in NET_RULES:
+                hm = URL_HOST.search(raw)
+                host = hm.group(1).lower() if hm else ""
+                if is_declared(host):
+                    out.append(Finding(rule.id, "LOW", rule.cap, f"calls its documented service ({_base(host)})",
+                                       rel, ln, raw.strip()[:110], auto_run, host, True))
+                    continue
             if rule.id == "token-literal" and EXAMPLE_TOKEN.search(m.group()):
                 continue  # documented example keys (AKIA...EXAMPLE, ghp_fake...)
             if rule.id == "inj-skip-perms" and is_md:
@@ -328,7 +377,7 @@ def scan_file(path: Path, root: Path, auto_run: bool) -> list[Finding]:
             # Prose that warns about, forbids or describes a pattern is not an instruction to do it.
             if is_md and not auto_run and DEFENSIVE.search(raw):
                 sev, desc = "LOW", desc + " (described or warned against)"
-                out.append(Finding(rule.id, sev, rule.cap, desc, rel, ln, raw.strip()[:110], auto_run))
+                out.append(Finding(rule.id, sev, rule.cap, desc, rel, ln, raw.strip()[:110], auto_run, host))
                 continue
             # "don't do X without asking" is the opposite of an injection.
             if rule.id == "inj-no-confirm" and re.search(r"(n't|\bnot|\bnever|\bonly)\b[^.\n]{0,60}$", text[max(0, m.start() - 80):m.start()], re.I):
@@ -337,7 +386,7 @@ def scan_file(path: Path, root: Path, auto_run: bool) -> list[Finding]:
             # Injection rules keep full weight: the model reads fenced text too.
             if ln in fenced and rule.cap not in ("injection",) and not auto_run:
                 sev, desc = DOWNGRADE[sev], desc + " (in code example)"
-            out.append(Finding(rule.id, sev, rule.cap, desc, rel, ln, raw.strip()[:110], auto_run))
+            out.append(Finding(rule.id, sev, rule.cap, desc, rel, ln, raw.strip()[:110], auto_run, host))
             if len(out) > 400:
                 break
     textual = is_md or path.suffix in (".json", ".yaml", ".yml", ".txt")
@@ -381,7 +430,12 @@ def scan_mcp(u: Unit) -> list[Finding]:
     url = str(cfg.get("url", ""))
     loc = u.path
     if url:
-        out.append(Finding("mcp-remote", "MED", "network", f"remote MCP server {url[:60]}", loc, 1, url[:110]))
+        hm = URL_HOST.search(url)
+        host = hm.group(1).lower() if hm else ""
+        if is_declared(host):
+            out.append(Finding("mcp-remote", "LOW", "network", f"remote MCP server on its documented service ({_base(host)})", loc, 1, url[:110], False, host, True))
+        else:
+            out.append(Finding("mcp-remote", "MED", "network", f"remote MCP server {url[:60]}", loc, 1, url[:110], False, host))
     if re.search(r"\b(npx|uvx|bunx|pipx\s+run)\b", cmd):
         pinned = re.search(r"@\d+\.\d+|==\d", cmd)
         out.append(Finding("mcp-unpinned" if not pinned else "mcp-pkg", "MED" if not pinned else "LOW", "shell",
@@ -398,6 +452,44 @@ def scan_mcp(u: Unit) -> list[Finding]:
     return out
 
 
+HARD_RULES = {"exfil-combo", "b64-decode-exec", "mcp-inline-secret", "mcp-docker-priv"}
+HARD_IN_HOOKS = {"pipe-to-shell", "persistence", "rm-rf-broad", "secret-paths"}
+
+
+def is_hard(f: Finding) -> bool:
+    """Findings that block on their own, whatever the score."""
+    if f.sev != "HIGH":
+        return False
+    if f.rule in HARD_RULES:
+        return True
+    # Invisible text only matters where the model reads it (markdown, json); in code it's usually a sanitizer.
+    if f.rule == "hidden-unicode":
+        return f.file.endswith((".md", ".json", ".yaml", ".yml", ".txt"))
+    if not f.auto_run:
+        return False
+    if f.rule in HARD_IN_HOOKS:
+        return True
+    # A hook sending data only blocks when we can see it goes to a named host that isn't the bundle's own service.
+    # A call to a variable URL (typically the plugin's own configured backend) is caution, not block.
+    return f.rule in SEND_RULES and bool(f.host) and not f.declared
+
+
+def exfil_combo(u: Unit) -> list[Finding]:
+    """A read of credentials/env and a send to a non-documented host within 25 lines of the same file."""
+    reads = [f for f in u.findings if f.rule in SECRET_RULES and f.sev != "LOW"]
+    sends = [f for f in u.findings if f.rule in SEND_RULES and f.sev != "LOW" and not f.declared]
+    # Only a read and a send close together in the same file count: a doc page that mentions ~/.aws
+    # and an unrelated API client elsewhere in the skill is not a data flow.
+    pairs = [(r, sd) for r in reads for sd in sends if r.file == sd.file and abs(r.line - sd.line) <= 25]
+    if not pairs:
+        return []
+    r0, s = pairs[0]
+    reads = [r0]
+    where = s.host or "an undeclared host"
+    return [Finding("exfil-combo", "HIGH", "secrets", f"reads credentials/env and sends data to {where}",
+                    s.file, s.line, f"reads: {reads[0].file}:{reads[0].line} · sends: {s.snippet[:70]}", s.auto_run, s.host)]
+
+
 def score_unit(u: Unit) -> None:
     deduct = 0.0
     by_rule: dict[str, list[Finding]] = {}
@@ -410,15 +502,18 @@ def score_unit(u: Unit) -> None:
         deduct += w * min(2.0, 1 + 0.25 * math.log2(len(fs)))
     u.score = max(0, round(100 - deduct))
     has_auto_high = any(f.sev == "HIGH" and f.auto_run for f in u.findings)
-    if u.score < 40 or has_auto_high:
-        u.verdict = "BLOCK"
+    if any(is_hard(f) for f in u.findings):
+        u.verdict = "BLOCK"      # looks like exfiltration, smuggling or remote code at startup
+    elif u.score < 40 or has_auto_high:
+        u.verdict = "CAUTION"    # powerful and worth reading, but nothing looks like exfiltration
     elif u.score < 75:
         u.verdict = "REVIEW"
     else:
         u.verdict = "OK"
 
 
-def scan(root: Path) -> list[Unit]:
+def scan(root: Path, name_hint: str = "") -> list[Unit]:
+    collect_declared(root, name_hint or root.name)
     units = discover(root)
     for u in units:
         files = [Path(f) for f in u.files]
@@ -427,6 +522,7 @@ def scan(root: Path) -> list[Unit]:
             for f in files:
                 u.findings.extend(scan_file(f, root, auto))
         u.findings.extend(scan_allowed_tools(u))
+        u.findings.extend(exfil_combo(u))
         if u.kind == "mcp":
             u.findings.extend(scan_mcp(u))
         if u.kind == "hooks":
@@ -453,14 +549,16 @@ def overall(units: list[Unit]) -> tuple[int, str]:
     scores = sorted(u.score for u in units)
     worst = scores[: max(1, math.ceil(len(scores) * 0.2))]
     s = round(0.6 * (sum(worst) / len(worst)) + 0.4 * (sum(scores) / len(scores)))
-    if any(u.verdict == "BLOCK" for u in units) and s >= 40:
-        return s, "REVIEW" if s >= 60 else "BLOCK"
-    return s, "BLOCK" if s < 40 else "REVIEW" if s < 75 else "OK"
+    if any(u.verdict == "BLOCK" for u in units):
+        return s, "BLOCK" if s < 60 else "CAUTION"
+    if s < 40 or (any(u.verdict == "CAUTION" for u in units) and s < 60):
+        return s, "CAUTION"
+    return s, "REVIEW" if s < 75 else "OK"
 
 
 # --------------------------------------------------------------------------- output
 
-C = {"HIGH": "\033[31m", "MED": "\033[33m", "LOW": "\033[36m", "OK": "\033[32m", "REVIEW": "\033[33m",
+C = {"HIGH": "\033[31m", "MED": "\033[33m", "LOW": "\033[36m", "OK": "\033[32m", "REVIEW": "\033[33m", "CAUTION": "\033[35m",
      "BLOCK": "\033[31m", "dim": "\033[2m", "b": "\033[1m", "0": "\033[0m"}
 
 
@@ -480,8 +578,8 @@ def report(name: str, units: list[Unit], per_unit: bool, min_sev: str, top: int,
     out.append(f"TRUST {col(v, f'{s}/100  {v}', color)}")
     allcaps = ["shell", "network", "fs-write", "secrets", "hooks", "mcp", "injection-surface", "obfuscation"]
     out.append("Capabilities: " + "  ".join(f"{c} {'✔' if c in caps else '✗'}" for c in allcaps))
-    dist = {k: sum(1 for u in units if u.verdict == k) for k in ("OK", "REVIEW", "BLOCK")}
-    out.append(f"Units: {col('OK', str(dist['OK']) + ' ok', color)}  {col('REVIEW', str(dist['REVIEW']) + ' review', color)}  {col('BLOCK', str(dist['BLOCK']) + ' block', color)}")
+    dist = {k: sum(1 for u in units if u.verdict == k) for k in ("OK", "REVIEW", "CAUTION", "BLOCK")}
+    out.append("Units: " + "  ".join(col(k, f"{dist[k]} {k.lower()}", color) for k in dist))
     out.append("")
     fs = [f for u in units for f in u.findings if SEV_ORDER[f.sev] >= SEV_ORDER[min_sev]]
     # dedupe by (rule,file) for the top list, highest severity first, auto-run first
@@ -559,7 +657,7 @@ def main(argv=None) -> int:
     p.add_argument("--per-unit", action="store_true", help="list every skill/command/hook/MCP unit with its score")
     p.add_argument("--min-severity", default="LOW", choices=["LOW", "MED", "HIGH"])
     p.add_argument("--top", type=int, default=15)
-    p.add_argument("--fail-on", choices=["REVIEW", "BLOCK"], help="exit 1 if verdict is at least this")
+    p.add_argument("--fail-on", choices=["REVIEW", "CAUTION", "BLOCK"], help="exit 1 if verdict is at least this")
     p.add_argument("--include-tests", action="store_true", help="also scan tests/, examples/, .github/ (not shipped to agents)")
     p.add_argument("--skills-only", action="store_true", help="ignore repo code outside skill/command/agent/hook/MCP units")
     p = sub.add_parser("lock", help="write a lockfile approving the current state")
@@ -575,7 +673,7 @@ def main(argv=None) -> int:
     INCLUDE_DEV = getattr(a, "include_tests", False)
     SKILLS_ONLY = getattr(a, "skills_only", False)
     root, name = resolve_target(a.target)
-    units = scan(root)
+    units = scan(root, name)
     color = sys.stdout.isatty() and not os.environ.get("NO_COLOR")
 
     if a.cmd == "scan":
@@ -584,7 +682,8 @@ def main(argv=None) -> int:
         else:
             print(report(name, units, a.per_unit, a.min_severity, a.top, color))
         _, v = overall(units)
-        if a.fail_on and SEV_ORDER.get({"OK": "LOW", "REVIEW": "MED", "BLOCK": "HIGH"}[v], 0) >= SEV_ORDER[{"REVIEW": "MED", "BLOCK": "HIGH"}[a.fail_on]]:
+        rank = {"OK": 0, "REVIEW": 1, "CAUTION": 2, "BLOCK": 3}
+        if a.fail_on and rank[v] >= rank[a.fail_on]:
             return 1
         return 0
     if a.cmd == "lock":
